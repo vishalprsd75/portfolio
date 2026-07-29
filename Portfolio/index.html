@@ -134,7 +134,7 @@
         <div class="about-grid">
           <div class="about-image reveal-left">
             <div class="about-image-frame">
-              <img src="./images/me.png" alt="Vishal Prasad" loading="lazy" />
+              <img src="./images/me-2.png" alt="Vishal Prasad" loading="lazy" />
             </div>
             <div class="about-experience-badge">
               <span class="badge-number">Freelance</span>
@@ -341,8 +341,8 @@
             <div class="project-image">
               <img src="./images/pro-1.png" alt="Notes App — React Application" loading="lazy" />
               <div class="project-image-overlay">
-                <a href="https://astounding-biscotti-69fbce.netlify.app/" class="project-overlay-btn live"
-                  target="_blank" rel="noopener">Live Demo</a>
+                <a href="https://notes-mate.netlify.app/" class="project-overlay-btn live" target="_blank"
+                  rel="noopener">Live Demo</a>
                 <a href="https://github.com/vishalprsd75/Noteapp-frontend" class="project-overlay-btn code"
                   target="_blank" rel="noopener">Source Code</a>
               </div>
@@ -361,23 +361,23 @@
           <!-- Project 2 -->
           <div class="project-card reveal stagger-2">
             <div class="project-image">
-              <img src="./images/pro-2.png" alt="Portfolio Website" loading="lazy" />
+              <img src="./images/pro-2.png" alt="SaaS Task Dashboard" loading="lazy" />
               <div class="project-image-overlay">
-                <a href="https://vishlportfolio.netlify.app/" class="project-overlay-btn live" target="_blank"
+                <a href="https://vishal-taskflow.netlify.app/" class="project-overlay-btn live" target="_blank"
                   rel="noopener">Live Demo</a>
-                <a href="https://github.com/vishalprsd75" class="project-overlay-btn code" target="_blank"
-                  rel="noopener">Source Code</a>
+                <a href="https://github.com/vishalprsd75/vishal-taskflow-" class="project-overlay-btn code"
+                  target="_blank" rel="noopener">Source Code</a>
               </div>
             </div>
             <div class="project-info">
               <div class="project-tags">
-                <span class="project-tag">HTML</span>
-                <span class="project-tag alt">CSS</span>
-                <span class="project-tag">JavaScript</span>
+                <span class="project-tag">React</span>
+                <span class="project-tag alt">CSS Variables</span>
+                <span class="project-tag">Vite</span>
               </div>
-              <h3>Portfolio Website</h3>
-              <p>A responsive personal portfolio with smooth animations, contact form integration, and modern design
-                patterns.</p>
+              <h3>SaaS Task Dashboard</h3>
+              <p>A modern, frontend task management dashboard featuring a custom design system, an interactive Kanban
+                board, and a light/dark mode toggle. (Sample Project)</p>
             </div>
           </div>
           <!-- Project 3 -->
@@ -457,7 +457,8 @@
           <!-- Contact Form -->
           <div class="contact-form reveal-right">
             <h3>Send Me a Message</h3>
-            <form id="contact-form">
+            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+              <input type="hidden" name="access_key" value="96ce1678-06d6-49fa-b045-6d6cb9ad1cd7" />
               <div class="form-row">
                 <div class="form-group">
                   <input type="text" name="from_name" class="form-input" placeholder="Your Name *" required />
@@ -542,8 +543,7 @@
   </div>
 
   <!-- ═══ SCRIPTS ═══ -->
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- Web3Forms (No SDK required) -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
 
@@ -701,12 +701,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // ── EmailJS Contact Form ──────────────────────────
-      const EMAILJS_PUBLIC_KEY = "k1bBk2HUeXoPsI_bz";
-      const EMAILJS_SERVICE_ID = "service_i2qcjpq";
-      const EMAILJS_TEMPLATE_ID = "template_wzgtnno";
-
-      if (window.emailjs) { emailjs.init(EMAILJS_PUBLIC_KEY); }
+      // ── Web3Forms Contact Form ──────────────────────────
 
       const form = document.getElementById("contact-form");
       const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
@@ -767,17 +762,22 @@
             return;
           }
           setLoading(true);
-          if (!window.emailjs) {
-            setLoading(false);
-            openModal("Error ❌", "EmailJS library not loaded.");
-            return;
-          }
-          emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
-            .then(() => {
-              lastSubmitAt = Date.now();
-              setLoading(false);
-              form.reset();
-              openModal("Message sent ✅", "Thanks! I'll get back to you soon.");
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: new FormData(form)
+          })
+            .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                lastSubmitAt = Date.now();
+                setLoading(false);
+                form.reset();
+                openModal("Message sent ✅", "Thanks! I'll get back to you soon.");
+              } else {
+                console.log(response);
+                setLoading(false);
+                openModal("Couldn't send ❌", json.message || "Please try again in a moment.");
+              }
             })
             .catch((err) => {
               console.error(err);
@@ -787,6 +787,44 @@
         });
       }
 
+    });
+  </script>
+
+  <!-- ═══ CUSTOM CURSOR ═══ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorOutline = document.getElementById('cursorOutline');
+
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        window.addEventListener('mousemove', (e) => {
+          const posX = e.clientX;
+          const posY = e.clientY;
+
+          cursorDot.style.left = `${posX}px`;
+          cursorDot.style.top = `${posY}px`;
+
+          cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+          }, { duration: 500, fill: "forwards" });
+        });
+
+        const clickables = document.querySelectorAll('a, button, input, textarea, .nav-brand, .project-card, .btn');
+        clickables.forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+            cursorOutline.classList.add('hover');
+          });
+          el.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+            cursorOutline.classList.remove('hover');
+          });
+        });
+      }
     });
   </script>
 </body>

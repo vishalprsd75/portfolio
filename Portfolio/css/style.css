@@ -1330,3 +1330,58 @@ a {
   .hero-cta { flex-direction: column; align-items: center; }
   .hero-stats { flex-wrap: wrap; }
 }
+
+/* ── Custom Cursor ─────────────────────────────────────── */
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 99999;
+  pointer-events: none;
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none !important;
+  }
+  body * {
+    cursor: none !important;
+  }
+  
+  .cursor-dot,
+  .cursor-outline {
+    display: block;
+  }
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-1);
+  transition: width 0.2s ease-out, height 0.2s ease-out, background-color 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(0, 212, 170, 0.5);
+  transition: width 0.2s ease-out, height 0.2s ease-out, border-color 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+.cursor-dot.hover {
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-2);
+  opacity: 0.8;
+}
+
+.cursor-outline.hover {
+  width: 60px;
+  height: 60px;
+  border-color: var(--accent-2);
+  background-color: rgba(0, 180, 216, 0.1);
+}
