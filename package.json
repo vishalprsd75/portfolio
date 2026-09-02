@@ -1,0 +1,17 @@
+{
+  "name": "vishal-portfolio",
+  "version": "1.0.0",
+  "description": "Vishal Prasad — Freelance Web Developer Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "freelance",
+    "web-developer"
+  ],
+  "author": "Vishal Prasad",
+  "license": "ISC"
+}

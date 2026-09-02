@@ -4,18 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vishal Prasad — Full-Stack Web Developer & Freelancer</title>
+  <title>Vishal Prasad | Freelance Web Developer</title>
   <meta name="description"
-    content="Vishal Prasad — Full-Stack Web Developer specializing in React, Node.js, PHP & MongoDB. I build responsive, high-performance web applications. Available for freelance projects." />
+    content="Freelance web developer building modern, responsive websites and web applications for businesses, startups, and professionals." />
   <meta name="keywords"
-    content="web developer, freelancer, full-stack developer, React, Node.js, PHP, portfolio, Vishal Prasad" />
+    content="freelance web developer, web developer, React developer, full-stack developer, Node.js, PHP, responsive website, web applications, Vishal Prasad" />
   <meta name="author" content="Vishal Prasad" />
+  <link rel="canonical" href="https://techsevishal.netlify.app/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Vishal Prasad — Full-Stack Web Developer & Freelancer" />
-  <meta property="og:description"
-    content="I build responsive, high-performance web applications. Available for freelance projects." />
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://techsevishal.netlify.app/" />
+  <meta property="og:title" content="Vishal Prasad | Freelance Web Developer" />
+  <meta property="og:description"
+    content="Freelance web developer building modern, responsive websites and web applications for businesses, startups, and professionals." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vishal Prasad | Freelance Web Developer" />
+  <meta name="twitter:description"
+    content="Freelance web developer building modern, responsive websites and web applications for businesses, startups, and professionals." />
 
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,12 +51,14 @@
   <!-- ═══ MOBILE NAV ═══ -->
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
     <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
+    <a href="#services">Services</a>
+    <a href="#why-me">Why Me</a>
     <a href="#projects">Projects</a>
+    <a href="#process">Process</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
-    <a href="./images/CV.pdf" download class="btn btn-primary" style="margin-top:1rem;text-align:center;">Download
-      CV</a>
+    <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem;text-align:center;">Start a Project</a>
   </div>
 
   <!-- ═══ NAVIGATION ═══ -->
@@ -60,13 +70,16 @@
       </a>
       <ul class="nav-links">
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-me">Why Me</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="#contact" class="btn btn-primary">Hire Me</a>
+        <a href="#contact" class="btn btn-primary">Start a Project</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span>
@@ -86,19 +99,25 @@
       </div>
       <div class="container">
         <div class="hero-content">
-          <p class="hero-greeting"><span class="wave">👋</span> Hello, I'm</p>
+          <p class="hero-greeting"><span class="wave">👋</span> Freelance Web Developer</p>
           <h1 class="hero-name">
-            <span>Vishal</span>
-            <span class="gradient-text">Prasad</span>
+            <span>Build a Website That Works for</span>
+            <span class="gradient-text">Your Business</span>
           </h1>
-          <p class="hero-role">I build <span class="typing-text" id="typingText"></span></p>
+          <p class="hero-role">Specializing in <span class="typing-text" id="typingText"></span></p>
           <p class="hero-description">
-            A passionate full-stack developer who transforms ideas into fast, responsive, and user-friendly web
-            applications. I craft clean code with seamless user experiences — and I'm ready to build yours.
+            I design and develop fast, modern, and responsive websites for businesses, startups, and professionals looking to build a stronger online presence.
           </p>
           <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Start a Project →</a>
-            <a href="./images/CV.pdf" download class="btn btn-secondary">Download CV</a>
+            <a href="#contact" class="btn btn-primary">Start Your Project →</a>
+            <a href="#projects" class="btn btn-secondary">View My Work</a>
+          </div>
+          <div class="about-tech-tags" style="margin-bottom: 2rem;">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag purple">Node.js</span>
+            <span class="tech-tag blue">Responsive Design</span>
+            <span class="tech-tag">SEO-Ready</span>
+            <span class="tech-tag purple">Full-Stack</span>
           </div>
           <div class="hero-stats">
             <div class="stat-item">
@@ -107,17 +126,17 @@
             </div>
             <div class="stat-item">
               <div class="stat-number">10+</div>
-              <div class="stat-label">Projects</div>
+              <div class="stat-label">Projects Built</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">1</div>
-              <div class="stat-label">Internship</div>
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Responsive</div>
             </div>
           </div>
         </div>
         <div class="hero-image">
           <div class="hero-image-wrapper">
-            <img src="./images/me.png" alt="Vishal Prasad — Full-Stack Developer" loading="eager" />
+            <img src="./images/me.png" alt="Vishal Prasad — Freelance Web Developer" loading="eager" />
           </div>
           <span class="hero-float-badge badge-1">⚛️ React</span>
           <span class="hero-float-badge badge-2">🟢 Node.js</span>
@@ -128,98 +147,288 @@
       </div>
     </section>
 
-    <!-- ═══ ABOUT SECTION ═══ -->
-    <section class="section about" id="about">
+    <!-- ═══ SERVICES SECTION ═══ -->
+    <section class="section services" id="services">
       <div class="container">
-        <div class="about-grid">
-          <div class="about-image reveal-left">
-            <div class="about-image-frame">
-              <img src="./images/me.png" alt="Vishal Prasad" loading="lazy" />
-            </div>
-            <div class="about-experience-badge">
-              <span class="badge-number">Freelance</span>
-              <span class="badge-text">Developer</span>
+        <div class="text-center reveal">
+          <span class="section-label" style="justify-content:center;">What I Can Build</span>
+          <h2 class="section-title" style="text-align:center;">Web Development <span class="highlight">Services</span></h2>
+          <p class="section-subtitle centered">
+            Tailored digital solutions designed to help businesses, startups, and professionals establish a modern online presence and generate enquiries.
+          </p>
+        </div>
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card reveal stagger-1">
+            <div class="service-icon">🌐</div>
+            <h3>Business Websites</h3>
+            <p>Professional websites designed to establish your business online, build client trust, and generate qualified enquiries.</p>
+            <div class="service-features">
+              <span class="service-tag">Lead Generation</span>
+              <span class="service-tag">Custom UI</span>
+              <span class="service-tag">SEO-Ready</span>
             </div>
           </div>
-          <div class="about-content reveal-right">
-            <span class="section-label">About Me</span>
-            <h2 class="section-title">Building Digital Solutions That <span class="highlight">Make an Impact</span></h2>
-            <p class="about-text">
-              I'm a full-stack developer with a strong foundation in modern web technologies, backed by an MCA from B.C. Roy College. I am highly motivated and actively seeking freelance opportunities where I can grow my expertise while delivering exactly what my clients expect—on time and with top-tier quality.
-            </p>
-            <p class="about-text">
-              Whether you need a pixel-perfect UI or reliable backend logic, my absolute priority is turning your vision into a reality. I pride myself on clear communication, dedication, and exceeding client expectations. If you'd like to see my full background, feel free to <a href="./images/CV.pdf" download class="highlight" style="text-decoration: underline; font-weight: 500;">download my CV</a>. Let's build something great together!
-            </p>
-            <div class="about-tech-tags" style="margin-bottom: 1rem;">
-              <span class="tech-tag" style="border-radius: 4px; border-style: dashed;">🚀 Tech Explorer</span>
-              <span class="tech-tag" style="border-radius: 4px; border-style: dashed;">💡 Always Learning</span>
-              <span class="tech-tag" style="border-radius: 4px; border-style: dashed;">🎨 Creative Developer</span>
-              <span class="tech-tag" style="border-radius: 4px; border-style: dashed;">🤖 AI Friendly</span>
+          <!-- Service 2 -->
+          <div class="service-card reveal stagger-2">
+            <div class="service-icon">💼</div>
+            <h3>Portfolio Websites</h3>
+            <p>Modern personal and professional websites for developers, designers, consultants, creators, and executives to showcase their expertise.</p>
+            <div class="service-features">
+              <span class="service-tag">Personal Branding</span>
+              <span class="service-tag">Fast Load</span>
+              <span class="service-tag">Mobile-First</span>
             </div>
-            <div class="about-tech-tags">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag purple">React.js</span>
-              <span class="tech-tag purple">Node.js</span>
-              <span class="tech-tag blue">PHP</span>
-              <span class="tech-tag blue">MySQL</span>
-              <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag purple">Express.js</span>
-              <span class="tech-tag blue">Git</span>
+          </div>
+          <!-- Service 3 -->
+          <div class="service-card reveal stagger-3">
+            <div class="service-icon">🛒</div>
+            <h3>E-commerce Websites</h3>
+            <p>Responsive online store solutions featuring clean product listings, interactive shopping carts, and a scalable backend structure.</p>
+            <div class="service-features">
+              <span class="service-tag">Product Catalog</span>
+              <span class="service-tag">Cart System</span>
+              <span class="service-tag">Scalable DB</span>
             </div>
-            <div class="about-socials">
-              <a href="https://github.com/vishalprsd75" class="social-link" aria-label="GitHub" target="_blank"
-                rel="noopener">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                </svg>
-              </a>
-              <a href="https://linkedin.com/in/vishal-prasad-1a1b0124b/" class="social-link" aria-label="LinkedIn"
-                target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-              <a href="https://www.instagram.com/vishlprsd/" class="social-link" aria-label="Instagram" target="_blank"
-                rel="noopener">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
-              </a>
-              <a href="https://twitter.com/" class="social-link" aria-label="Twitter" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
+          </div>
+          <!-- Service 4 -->
+          <div class="service-card reveal stagger-4">
+            <div class="service-icon">⚡</div>
+            <h3>Custom Web Applications</h3>
+            <p>Interactive web applications engineered around your specific business logic, workflow requirements, and dynamic data needs.</p>
+            <div class="service-features">
+              <span class="service-tag">React & Node.js</span>
+              <span class="service-tag">REST APIs</span>
+              <span class="service-tag">Full Stack</span>
+            </div>
+          </div>
+          <!-- Service 5 -->
+          <div class="service-card reveal stagger-5">
+            <div class="service-icon">🎨</div>
+            <h3>Website Redesign</h3>
+            <p>Modernize outdated websites with enhanced visual design, full mobile responsiveness, speed optimizations, and clean code.</p>
+            <div class="service-features">
+              <span class="service-tag">UI Refresh</span>
+              <span class="service-tag">Performance Boost</span>
+              <span class="service-tag">Mobile Fix</span>
+            </div>
+          </div>
+          <!-- Service 6 -->
+          <div class="service-card reveal stagger-6">
+            <div class="service-icon">🚀</div>
+            <h3>Landing Pages</h3>
+            <p>High-quality, single-page sites focused around a specific product, campaign, service offer, or conversion objective.</p>
+            <div class="service-features">
+              <span class="service-tag">High Impact</span>
+              <span class="service-tag">Clear CTA</span>
+              <span class="service-tag">Fast Delivery</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ SKILLS SECTION ═══ -->
+    <!-- ═══ WHY WORK WITH ME SECTION ═══ -->
+    <section class="section why-me" id="why-me">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="section-label" style="justify-content:center;">The Value You Get</span>
+          <h2 class="section-title" style="text-align:center;">Why Work <span class="highlight">With Me</span></h2>
+          <p class="section-subtitle centered">
+            Direct collaboration, modern engineering standards, and complete focus on delivering what your business needs.
+          </p>
+        </div>
+        <div class="why-me-grid">
+          <!-- Card 1 -->
+          <div class="why-card reveal stagger-1">
+            <div class="why-icon">📱</div>
+            <h3>Responsive by Default</h3>
+            <p>Websites designed and engineered to render flawlessly across mobile phones, tablets, laptops, and desktop displays.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="why-card reveal stagger-2">
+            <div class="why-icon">⚙️</div>
+            <h3>Modern Technology</h3>
+            <p>Built using modern industry standards (React, Node.js, PHP, clean CSS) ensuring reliability and easy maintenance.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="why-card reveal stagger-3">
+            <div class="why-icon">✨</div>
+            <h3>Clean & Professional Design</h3>
+            <p>Prioritizing visual clarity, polished layout aesthetics, and intuitive user experiences that build instant trust.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="why-card reveal stagger-4">
+            <div class="why-icon">💬</div>
+            <h3>Direct Communication</h3>
+            <p>You communicate directly with the developer building your project — ensuring transparent updates and quick revisions.</p>
+          </div>
+          <!-- Card 5 -->
+          <div class="why-card reveal stagger-5">
+            <div class="why-icon">🛠️</div>
+            <h3>Custom Solutions</h3>
+            <p>Tailored functionality adapted to your actual business requirements instead of forcing you into a rigid template.</p>
+          </div>
+          <!-- Card 6 -->
+          <div class="why-card reveal stagger-6">
+            <div class="why-icon">🚀</div>
+            <h3>Performance Focused</h3>
+            <p>Efficient, lightweight code structures and optimized assets for smooth performance and fast loading times.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROJECTS SECTION ═══ -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="projects-header reveal">
+          <span class="section-label" style="justify-content:center;">Portfolio</span>
+          <h2 class="section-title" style="text-align:center;">Selected <span class="highlight">Projects</span></h2>
+          <p class="section-subtitle centered">
+            A selection of projects demonstrating my ability to build clean, functional, and responsive web applications.
+          </p>
+          <!-- Category Filters -->
+          <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="web-apps">Web Applications</button>
+            <button class="filter-btn" data-filter="full-stack">Full Stack & E-Commerce</button>
+            <button class="filter-btn" data-filter="frontend">Frontend UI</button>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card reveal stagger-1" data-category="web-apps">
+            <div class="project-image">
+              <img src="./images/pro-1.png" alt="Notes App — React Application" loading="lazy" />
+              <div class="project-image-overlay">
+                <a href="https://notes-mate.netlify.app/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                <button class="project-details-btn" onclick="openProjectModal('notes')">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag alt">JavaScript</span>
+                <span class="project-tag">CSS</span>
+              </div>
+              <h3>Notes App</h3>
+              <p>A feature-rich note-taking application supporting full CRUD operations, live state updates, and an intuitive user interface.</p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card reveal stagger-2" data-category="frontend web-apps">
+            <div class="project-image">
+              <img src="./images/pro-2.png" alt="SaaS Task Dashboard" loading="lazy" />
+              <div class="project-image-overlay">
+                <a href="https://vishal-taskflow.netlify.app/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                <button class="project-details-btn" onclick="openProjectModal('taskflow')">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag alt">CSS Variables</span>
+                <span class="project-tag">Vite</span>
+              </div>
+              <h3>SaaS Task Dashboard</h3>
+              <p>A modern task management dashboard with a custom design system, Kanban-style workflows, and theme customization.</p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card reveal stagger-3" data-category="full-stack">
+            <div class="project-image">
+              <img src="./images/pro-3.png" alt="Watch Vista E-commerce" loading="lazy" />
+              <div class="project-image-overlay">
+                <a href="https://github.com/vishalprsd75/ecommerce-mern-app" class="project-overlay-btn code" target="_blank" rel="noopener">Source Code</a>
+                <button class="project-details-btn" onclick="openProjectModal('ecommerce')">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag alt">Node.js</span>
+                <span class="project-tag">MongoDB</span>
+                <span class="project-tag alt">Express</span>
+              </div>
+              <h3>Watch Vista E-commerce</h3>
+              <p>A full-stack e-commerce web application featuring user authentication, product catalog, wishlist, and shopping cart logic.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-more reveal">
+          <a href="https://github.com/vishalprsd75" target="_blank" rel="noopener">
+            Explore More Code Repositories on GitHub <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS / HOW I WORK ═══ -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="section-label" style="justify-content:center;">Development Process</span>
+          <h2 class="section-title" style="text-align:center;">How I <span class="highlight">Work</span></h2>
+          <p class="section-subtitle centered">
+            A simple, transparent 5-step process designed to take your idea from initial consultation to successful launch.
+          </p>
+        </div>
+        <div class="process-steps">
+          <!-- Step 1 -->
+          <div class="process-step reveal stagger-1">
+            <div class="step-number">01</div>
+            <h3>Share Your Idea</h3>
+            <p>Share your project requirements, business goals, target audience, and feature preferences.</p>
+          </div>
+          <!-- Step 2 -->
+          <div class="process-step reveal stagger-2">
+            <div class="step-number">02</div>
+            <h3>Discuss & Plan</h3>
+            <p>We clarify the scope, technical stack, key features, wireframe layout, and estimated timeline.</p>
+          </div>
+          <!-- Step 3 -->
+          <div class="process-step reveal stagger-3">
+            <div class="step-number">03</div>
+            <h3>Design & Development</h3>
+            <p>I build the website or web application using clean code and responsive design practices.</p>
+          </div>
+          <!-- Step 4 -->
+          <div class="process-step reveal stagger-4">
+            <div class="step-number">04</div>
+            <h3>Review & Revisions</h3>
+            <p>You review the interactive development preview and request adjustments before finalization.</p>
+          </div>
+          <!-- Step 5 -->
+          <div class="process-step reveal stagger-5">
+            <div class="step-number">05</div>
+            <h3>Launch</h3>
+            <p>After your final approval, the website is prepared for deployment and launched online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TECHNOLOGIES / SKILLS SECTION ═══ -->
     <section class="section skills" id="skills">
       <div class="container">
         <div class="text-center reveal">
-          <span class="section-label" style="justify-content:center;">What I Do</span>
-          <h2 class="section-title" style="text-align:center;">My <span class="highlight">Expertise</span></h2>
+          <span class="section-label" style="justify-content:center;">Technical Stack</span>
+          <h2 class="section-title" style="text-align:center;">Technologies I <span class="highlight">Work With</span></h2>
           <p class="section-subtitle centered">
-            A well-rounded skill set covering the full web development stack — from pixel-perfect frontends to scalable
-            backend systems.
+            A practical skill set covering core web technologies needed to deliver robust frontend and backend solutions.
           </p>
         </div>
         <div class="skills-grid">
-          <!-- Card 1 -->
+          <!-- Skill 1 -->
           <div class="skill-card reveal stagger-1">
             <div class="skill-icon">🎨</div>
             <h3>Frontend Development</h3>
-            <p>Building responsive, interactive UIs with HTML5, CSS3, and modern JavaScript. Pixel-perfect
-              implementation of designs.</p>
+            <p>Building clean, interactive user interfaces with HTML5, CSS3, and modern JavaScript with pixel-perfect attention to detail.</p>
             <div class="skill-bar-wrapper">
               <div class="skill-bar-label"><span>Proficiency</span><span>90%</span></div>
               <div class="skill-bar">
@@ -227,12 +436,11 @@
               </div>
             </div>
           </div>
-          <!-- Card 2 -->
+          <!-- Skill 2 -->
           <div class="skill-card reveal stagger-2">
             <div class="skill-icon">⚛️</div>
             <h3>React & Frameworks</h3>
-            <p>Dynamic SPAs with React.js, component-driven architecture, state management, and modern tooling for fast
-              development.</p>
+            <p>Developing single-page applications with React.js, component-driven architecture, reusable state patterns, and Vite tooling.</p>
             <div class="skill-bar-wrapper">
               <div class="skill-bar-label"><span>Proficiency</span><span>80%</span></div>
               <div class="skill-bar">
@@ -240,12 +448,11 @@
               </div>
             </div>
           </div>
-          <!-- Card 3 -->
+          <!-- Skill 3 -->
           <div class="skill-card reveal stagger-3">
             <div class="skill-icon">🖥️</div>
             <h3>Backend Development</h3>
-            <p>Server-side logic with Node.js, Express.js, and PHP. RESTful APIs, authentication, and business logic
-              implementation.</p>
+            <p>Server-side programming using Node.js, Express.js, and PHP. Building RESTful APIs and essential application logic.</p>
             <div class="skill-bar-wrapper">
               <div class="skill-bar-label"><span>Proficiency</span><span>85%</span></div>
               <div class="skill-bar">
@@ -253,12 +460,11 @@
               </div>
             </div>
           </div>
-          <!-- Card 4 -->
+          <!-- Skill 4 -->
           <div class="skill-card reveal stagger-4">
             <div class="skill-icon">🗄️</div>
-            <h3>Database Design</h3>
-            <p>Data modeling and management with MySQL and MongoDB. Query optimization, schema design, and efficient
-              data storage.</p>
+            <h3>Database Management</h3>
+            <p>Relational and document database design with MySQL, SQL, and MongoDB for secure and structured data storage.</p>
             <div class="skill-bar-wrapper">
               <div class="skill-bar-label"><span>Proficiency</span><span>80%</span></div>
               <div class="skill-bar">
@@ -266,12 +472,11 @@
               </div>
             </div>
           </div>
-          <!-- Card 5 -->
+          <!-- Skill 5 -->
           <div class="skill-card reveal stagger-5">
             <div class="skill-icon">📱</div>
-            <h3>Responsive Design</h3>
-            <p>Mobile-first layouts that work beautifully across every device. CSS Grid, Flexbox, and adaptive design
-              patterns.</p>
+            <h3>Responsive Web Design</h3>
+            <p>Creating flexible layouts using Flexbox, CSS Grid, media queries, and fluid typography across all device screens.</p>
             <div class="skill-bar-wrapper">
               <div class="skill-bar-label"><span>Proficiency</span><span>92%</span></div>
               <div class="skill-bar">
@@ -279,12 +484,11 @@
               </div>
             </div>
           </div>
-          <!-- Card 6 -->
+          <!-- Skill 6 -->
           <div class="skill-card reveal stagger-6">
             <div class="skill-icon">🛠️</div>
-            <h3>Tools & Workflow</h3>
-            <p>Version control with Git & GitHub, npm ecosystem, deployment workflows, and collaborative development
-              best practices.</p>
+            <h3>Tools & Deployment</h3>
+            <p>Version control with Git & GitHub, package management with npm, Netlify deployment workflows, and clean code practices.</p>
             <div class="skill-bar-wrapper">
               <div class="skill-bar-label"><span>Proficiency</span><span>75%</span></div>
               <div class="skill-bar">
@@ -296,110 +500,173 @@
       </div>
     </section>
 
-    <!-- ═══ FREELANCING CTA ═══ -->
+    <!-- ═══ ABOUT SECTION ═══ -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-image reveal-left">
+            <div class="about-image-frame">
+              <img src="./images/me-2.png" alt="Vishal Prasad — Freelance Web Developer" loading="lazy" />
+            </div>
+            <div class="about-experience-badge">
+              <span class="badge-number">Freelance</span>
+              <span class="badge-text">Developer</span>
+            </div>
+          </div>
+          <div class="about-content reveal-right">
+            <span class="section-label">About Me</span>
+            <h2 class="section-title">Vishal Prasad — <span class="highlight">Freelance Web Developer</span></h2>
+            <p class="about-text">
+              I am a web developer with a strong technical foundation in full-stack web technologies, backed by a Master of Computer Applications (MCA) degree from B.C. Roy Engineering College. I specialize in designing and engineering fast, responsive, and easy-to-use websites and web applications.
+            </p>
+            <p class="about-text">
+              My goal is to help businesses, startups, and professionals build digital solutions that fit their actual requirements. I focus on clean code, responsive layouts, clear communication, and delivering projects reliably. Feel free to explore my work or <a href="./images/CV.pdf" download class="highlight" style="text-decoration: underline; font-weight: 500;">download my CV</a> for additional technical background.
+            </p>
+            <div class="about-tech-tags">
+              <span class="tech-tag">HTML5 / CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag purple">React.js</span>
+              <span class="tech-tag purple">Node.js</span>
+              <span class="tech-tag blue">PHP</span>
+              <span class="tech-tag blue">MySQL</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag purple">Express.js</span>
+              <span class="tech-tag blue">Git & GitHub</span>
+            </div>
+            <div class="about-socials" style="margin-top: 1.5rem;">
+              <a href="https://github.com/vishalprsd75" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </a>
+              <a href="https://linkedin.com/in/vishal-prasad-1a1b0124b/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/vishlprsd/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ═══ -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="section-label" style="justify-content:center;">Common Questions</span>
+          <h2 class="section-title" style="text-align:center;">Frequently Asked <span class="highlight">Questions</span></h2>
+          <p class="section-subtitle centered">
+            Clear answers to help you understand how we can collaborate on your web development project.
+          </p>
+        </div>
+        <div class="faq-grid reveal">
+          <!-- Q1 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What type of websites do you build?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>I build custom business websites, portfolio sites, e-commerce stores, landing pages, and custom full-stack web applications using React, Node.js, Express, PHP, and modern databases.</p>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you build responsive websites?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! Every website and web application I develop is mobile-first and tested to ensure it renders and performs smoothly across mobile, tablet, and desktop viewports.</p>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can you redesign or upgrade my existing website?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutley. I can modernize your existing website's UI, convert older static code into a modern React application, improve page load performance, and ensure full mobile responsiveness.</p>
+            </div>
+          </div>
+          <!-- Q4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can you build a website from my existing design or ideas?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Whether you have Figma mockups, wireframes, or simply reference websites you like, I can translate your vision into clean, production-ready frontend and backend code.</p>
+            </div>
+          </div>
+          <!-- Q5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does a website take to complete?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Timelines depend on the total scope, page count, feature complexity, content availability, and revision rounds. We discuss and agree on a realistic estimated timeframe during our initial consultation.</p>
+            </div>
+          </div>
+          <!-- Q6 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can you help with hosting and deployment?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, deployment assistance can be provided. I can help set up and deploy your website to platforms like Netlify, Vercel, or custom servers, and link your custom domain name.</p>
+            </div>
+          </div>
+          <!-- Q7 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I request changes during development?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! We have a dedicated Review & Revisions step where you test the live development preview and provide feedback to ensure the final result aligns with your expectations.</p>
+            </div>
+          </div>
+          <!-- Q8 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do I start a project with you?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Simply fill out the project enquiry form below or send me an email. Share a few details about your project idea, and I'll get back to you to discuss the requirements!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MAIN CTA SECTION ═══ -->
     <section class="cta-section" id="cta">
       <div class="cta-bg"></div>
       <div class="container">
         <div class="cta-content reveal">
           <div class="cta-badge">
             <span class="dot"></span>
-            Available for Freelance Work
+            Available for Freelance Projects
           </div>
-          <h2 class="cta-title">Ready to Bring Your <span class="gradient-text">Ideas to Life?</span></h2>
+          <h2 class="cta-title">Have a Website Idea? <span class="gradient-text">Let's Build It.</span></h2>
           <p class="cta-text">
-            Whether you need a brand-new website, a web application, or improvements to an existing platform — I'm here
-            to help. Let's build something amazing together.
+            Tell me what you need, and let's discuss how I can turn your idea into a professional, high-performing website.
           </p>
           <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary">Let's Talk →</a>
-            <a href="https://github.com/vishalprsd75" class="btn btn-secondary" target="_blank" rel="noopener">View
-              GitHub</a>
+            <a href="#contact" class="btn btn-primary">Start Your Project →</a>
+            <a href="#projects" class="btn btn-secondary">View My Work</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ PROJECTS SECTION ═══ -->
-    <section class="section projects" id="projects">
-      <div class="container">
-        <div class="projects-header reveal">
-          <span class="section-label" style="justify-content:center;">Portfolio</span>
-          <h2 class="section-title" style="text-align:center;">Featured <span class="highlight">Projects</span></h2>
-          <p class="section-subtitle centered">
-            A selection of projects that showcase my ability to design, develop, and deliver complete web solutions.
-          </p>
-        </div>
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card reveal stagger-1">
-            <div class="project-image">
-              <img src="./images/pro-1.png" alt="Notes App — React Application" loading="lazy" />
-              <div class="project-image-overlay">
-                <a href="#" class="project-overlay-btn live">Live Demo</a>
-                <a href="https://github.com/vishalprsd75" class="project-overlay-btn code" target="_blank"
-                  rel="noopener">Source Code</a>
-              </div>
-            </div>
-            <div class="project-info">
-              <div class="project-tags">
-                <span class="project-tag">React</span>
-                <span class="project-tag alt">JavaScript</span>
-                <span class="project-tag">CSS</span>
-              </div>
-              <h3>Notes App</h3>
-              <p>A feature-rich note-taking application built with React, supporting CRUD operations with a clean,
-                intuitive UI.</p>
-            </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="project-card reveal stagger-2">
-            <div class="project-image">
-              <img src="./images/pro-2.png" alt="Portfolio Website" loading="lazy" />
-              <div class="project-image-overlay">
-                <a href="https://vishlportfolio.netlify.app/" class="project-overlay-btn live" target="_blank"
-                  rel="noopener">Live Demo</a>
-                <a href="https://github.com/vishalprsd75" class="project-overlay-btn code" target="_blank"
-                  rel="noopener">Source Code</a>
-              </div>
-            </div>
-            <div class="project-info">
-              <div class="project-tags">
-                <span class="project-tag">HTML</span>
-                <span class="project-tag alt">CSS</span>
-                <span class="project-tag">JavaScript</span>
-              </div>
-              <h3>Portfolio Website</h3>
-              <p>A responsive personal portfolio with smooth animations, contact form integration, and modern design
-                patterns.</p>
-            </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="project-card reveal stagger-3">
-            <div class="project-image">
-              <img src="./images/pro-3.png" alt="Coffee Connection — E-Commerce" loading="lazy" />
-              <div class="project-image-overlay">
-                <a href="https://connectcoffee.netlify.app/" class="project-overlay-btn live" target="_blank"
-                  rel="noopener">Live Demo</a>
-                <a href="https://github.com/vishalprsd75" class="project-overlay-btn code" target="_blank"
-                  rel="noopener">Source Code</a>
-              </div>
-            </div>
-            <div class="project-info">
-              <div class="project-tags">
-                <span class="project-tag">Bootstrap</span>
-                <span class="project-tag alt">HTML</span>
-                <span class="project-tag">CSS</span>
-              </div>
-              <h3>Coffee Connection</h3>
-              <p>An e-commerce landing page for a coffee brand with product showcases, responsive design, and smooth
-                navigation.</p>
-            </div>
-          </div>
-        </div>
-        <div class="projects-more reveal">
-          <a href="https://github.com/vishalprsd75" target="_blank" rel="noopener">
-            Explore More on GitHub <span class="arrow">→</span>
-          </a>
         </div>
       </div>
     </section>
@@ -409,9 +676,9 @@
       <div class="container">
         <div class="text-center reveal" style="margin-bottom:3rem;">
           <span class="section-label" style="justify-content:center;">Get in Touch</span>
-          <h2 class="section-title" style="text-align:center;">Let's Work <span class="highlight">Together</span></h2>
+          <h2 class="section-title" style="text-align:center;">Let's Discuss <span class="highlight">Your Project</span></h2>
           <p class="section-subtitle centered">
-            Have a project in mind or need a developer? Drop me a message and I'll get back to you within 24 hours.
+            Ready to build a website or web app? Send me your project details and I'll respond to discuss your requirements.
           </p>
         </div>
         <div class="contact-grid">
@@ -450,8 +717,9 @@
           </div>
           <!-- Contact Form -->
           <div class="contact-form reveal-right">
-            <h3>Send Me a Message</h3>
-            <form id="contact-form">
+            <h3>Send a Project Enquiry</h3>
+            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+              <input type="hidden" name="access_key" value="96ce1678-06d6-49fa-b045-6d6cb9ad1cd7" />
               <div class="form-row">
                 <div class="form-group">
                   <input type="text" name="from_name" class="form-input" placeholder="Your Name *" required />
@@ -460,18 +728,38 @@
                   <input type="email" name="reply_to" class="form-input" placeholder="Your Email *" required />
                 </div>
               </div>
-              <div class="form-group" style="margin-bottom:1rem;">
-                <input type="text" name="subject" class="form-input" placeholder="Subject" />
+              <div class="form-row">
+                <div class="form-group">
+                  <select name="project_type" class="form-select" required>
+                    <option value="" disabled selected>Select Project Type *</option>
+                    <option value="Business Website">Business Website</option>
+                    <option value="Portfolio Website">Portfolio Website</option>
+                    <option value="E-commerce Website">E-commerce Website</option>
+                    <option value="Custom Web Application">Custom Web Application</option>
+                    <option value="Website Redesign">Website Redesign</option>
+                    <option value="Landing Page">Landing Page</option>
+                    <option value="Other">Other Web Service</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select name="budget_range" class="form-select">
+                    <option value="" selected>Estimated Budget (Optional)</option>
+                    <option value="Under $500 / ₹40k">Under $500 / ₹40k</option>
+                    <option value="$500 - $1,500 / ₹40k - ₹1.2L">$500 – $1,500 / ₹40k – ₹1.2L</option>
+                    <option value="$1,500+ / ₹1.2L+">$1,500+ / ₹1.2L+</option>
+                    <option value="Flexible / Let's Discuss">Flexible / Let's Discuss</option>
+                  </select>
+                </div>
               </div>
               <div class="form-group" style="margin-bottom:1rem;">
-                <textarea name="message" class="form-textarea" rows="5" placeholder="Your Message *"
-                  required></textarea>
+                <textarea name="message" class="form-textarea" rows="5" placeholder="Tell me about your project requirements *" required></textarea>
               </div>
               <!-- Honeypot -->
               <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off" />
               <div class="form-submit">
-                <button type="submit" class="btn btn-primary" style="width:100%;">Send Message →</button>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Send Project Enquiry →</button>
               </div>
+              <p class="form-reassurance">Tell me about your project — I'll get back to you to discuss the requirements.</p>
             </form>
           </div>
         </div>
@@ -483,51 +771,53 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <a href="#home" class="footer-brand">
-          <div class="brand-icon">VP</div>
-          <span>Vishal<span style="color:var(--accent-1)">.</span></span>
-        </a>
+        <div>
+          <a href="#home" class="footer-brand">
+            <div class="brand-icon">VP</div>
+            <span>Vishal<span style="color:var(--accent-1)">.</span></span>
+          </a>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem; max-width:320px;">
+            Freelance Web Developer — Building modern websites and web applications for businesses, startups, and professionals.
+          </p>
+        </div>
         <ul class="footer-nav">
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why-me">Why Me</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="footer-socials">
-          <a href="https://github.com/vishalprsd75" class="footer-social-link" aria-label="GitHub" target="_blank"
-            rel="noopener">
+          <a href="https://github.com/vishalprsd75" class="footer-social-link" aria-label="GitHub" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
           </a>
-          <a href="https://linkedin.com/in/vishal-prasad-1a1b0124b/" class="footer-social-link" aria-label="LinkedIn"
-            target="_blank" rel="noopener">
+          <a href="https://linkedin.com/in/vishal-prasad-1a1b0124b/" class="footer-social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
           </a>
-          <a href="https://www.instagram.com/vishlprsd/" class="footer-social-link" aria-label="Instagram"
-            target="_blank" rel="noopener">
+          <a href="https://www.instagram.com/vishlprsd/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
             </svg>
           </a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© <span id="currentYear"></span> Vishal Prasad. Crafted with <span>♥</span> and clean code.</p>
+        <p>© <span id="currentYear"></span> Vishal Prasad. All rights reserved. Built with clean code & modern design.</p>
       </div>
     </div>
   </footer>
 
-  <!-- ═══ MODAL ═══ -->
+  <!-- ═══ MESSAGE NOTIFICATION MODAL ═══ -->
   <div id="msgModal" class="c-modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="c-modal" role="document">
-      <h3 id="modalTitle">Message sent ✅</h3>
+      <h3 id="modalTitle">Enquiry Sent ✅</h3>
       <p id="modalText">Thanks! I'll get back to you soon.</p>
       <div class="actions">
         <button class="btn btn-primary" id="modalOk">OK</button>
@@ -535,12 +825,112 @@
     </div>
   </div>
 
-  <!-- ═══ SCRIPTS ═══ -->
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
+  <!-- ═══ PROJECT DETAIL MODAL ═══ -->
+  <div id="projectModal" class="p-modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="p-modal" role="document">
+      <button class="p-modal-close" onclick="closeProjectModal()" aria-label="Close modal">✕</button>
+      <img id="pModalImg" src="" alt="" class="p-modal-img" />
+      <div id="pModalTags" class="p-modal-tags"></div>
+      <h3 id="pModalTitle"></h3>
+      <div class="p-modal-section">
+        <h4>Project Goal</h4>
+        <p id="pModalGoal"></p>
+      </div>
+      <div class="p-modal-section">
+        <h4>Key Features & Architecture</h4>
+        <ul id="pModalFeatures"></ul>
+      </div>
+      <div class="p-modal-actions" id="pModalActions"></div>
+    </div>
+  </div>
 
+  <!-- ═══ SCRIPTS ═══ -->
+  <script>
+    // Project Data Object for Modal Popup
+    const projectData = {
+      notes: {
+        title: "Notes App — React Application",
+        img: "./images/pro-1.png",
+        tags: ["React", "JavaScript", "CSS3", "Frontend SPA"],
+        goal: "Build a responsive note-taking web app supporting CRUD operations, state persistence, and clean categorization with an intuitive user interface.",
+        features: [
+          "Complete Create, Read, Update, and Delete (CRUD) workflow for notes.",
+          "Live client-side search and tag filtering for quick organization.",
+          "Clean component architecture using modern React state management.",
+          "Fluid responsive design tailored for mobile and desktop screens."
+        ],
+        live: "https://notes-mate.netlify.app/",
+        code: "https://github.com/vishalprsd75/Noteapp-frontend"
+      },
+      taskflow: {
+        title: "SaaS Task Dashboard",
+        img: "./images/pro-2.png",
+        tags: ["React", "CSS Variables", "Vite", "Kanban UI"],
+        goal: "Design and develop a modern task management dashboard interface showcasing advanced React UI patterns and custom design system architecture.",
+        features: [
+          "Interactive Kanban-style task columns with dynamic status tracking.",
+          "Custom CSS variable design system supporting smooth Light & Dark mode toggle.",
+          "Optimized component state updates and fast Vite build configuration.",
+          "Responsive dashboard grid designed for clear analytical data viewing."
+        ],
+        live: "https://vishal-taskflow.netlify.app/",
+        code: "https://github.com/vishalprsd75/vishal-taskflow-"
+      },
+      ecommerce: {
+        title: "Watch Vista E-commerce Platform",
+        img: "./images/pro-3.png",
+        tags: ["React", "Node.js", "Express.js", "MongoDB", "MERN Stack"],
+        goal: "Engineered a full-stack e-commerce web application with dedicated product management, user authentication, wishlist, and shopping cart systems.",
+        features: [
+          "Full MERN stack (MongoDB, Express, React, Node.js) REST API architecture.",
+          "Product catalog filtering, detail views, and wishlist interaction.",
+          "Dynamic shopping cart state management with live price calculations.",
+          "Dedicated administrative dashboard view for product catalog management."
+        ],
+        live: "",
+        code: "https://github.com/vishalprsd75/ecommerce-mern-app"
+      }
+    };
+
+    function openProjectModal(key) {
+      const p = projectData[key];
+      if (!p) return;
+
+      document.getElementById('pModalImg').src = p.img;
+      document.getElementById('pModalImg').alt = p.title;
+      document.getElementById('pModalTitle').textContent = p.title;
+      document.getElementById('pModalGoal').textContent = p.goal;
+
+      const tagsEl = document.getElementById('pModalTags');
+      tagsEl.innerHTML = p.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+
+      const featuresEl = document.getElementById('pModalFeatures');
+      featuresEl.innerHTML = p.features.map(f => `<li>${f}</li>`).join('');
+
+      const actionsEl = document.getElementById('pModalActions');
+      let actionsHtml = '';
+      if (p.live) {
+        actionsHtml += `<a href="${p.live}" class="btn btn-primary" target="_blank" rel="noopener">Visit Live Demo →</a>`;
+      }
+      if (p.code) {
+        actionsHtml += `<a href="${p.code}" class="btn btn-secondary" target="_blank" rel="noopener">View Source Code</a>`;
+      }
+      actionsEl.innerHTML = actionsHtml;
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
       // ── Page Loader ───────────────────────────────────
       const pageLoader = document.getElementById('pageLoader');
       window.addEventListener('load', () => {
@@ -554,11 +944,11 @@
       // ── Typing Effect ─────────────────────────────────
       const typingEl = document.getElementById('typingText');
       const phrases = [
-        'Modern Web Applications.',
-        'React & Node.js Solutions.',
-        'Responsive User Interfaces.',
-        'Full-Stack Web Experiences.',
-        'Scalable Backend Systems.'
+        'Responsive Business Websites.',
+        'React & Node.js Web Apps.',
+        'E-Commerce & Online Stores.',
+        'High-Converting Landing Pages.',
+        'Custom Web Solutions.'
       ];
       let phraseIndex = 0;
       let charIndex = 0;
@@ -580,12 +970,12 @@
         }
 
         if (!isDeleting && charIndex === current.length) {
-          typeSpeed = 2000; // pause at end
+          typeSpeed = 2000;
           isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
           isDeleting = false;
           phraseIndex = (phraseIndex + 1) % phrases.length;
-          typeSpeed = 400; // pause before next phrase
+          typeSpeed = 400;
         }
 
         setTimeout(typeEffect, typeSpeed);
@@ -652,7 +1042,52 @@
       mobileNav && mobileNav.querySelectorAll('a').forEach(a =>
         a.addEventListener('click', closeMobileNav)
       );
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileNav(); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          closeMobileNav();
+          closeProjectModal();
+        }
+      });
+
+      // ── Project Category Filters ─────────────────────
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter');
+          projectCards.forEach(card => {
+            const categories = card.getAttribute('data-category');
+            if (filter === 'all' || (categories && categories.includes(filter))) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // ── FAQ Accordion ─────────────────────────────────
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const questionBtn = item.querySelector('.faq-question');
+        questionBtn.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // ── Project Modal Backdrop click ──────────────────
+      const projectModal = document.getElementById('projectModal');
+      projectModal && projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) closeProjectModal();
+      });
 
       // ── Scroll Reveal (IntersectionObserver) ──────────
       const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
@@ -695,13 +1130,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // ── EmailJS Contact Form ──────────────────────────
-      const EMAILJS_PUBLIC_KEY = "k1bBk2HUeXoPsI_bz";
-      const EMAILJS_SERVICE_ID = "service_i2qcjpq";
-      const EMAILJS_TEMPLATE_ID = "template_wzgtnno";
-
-      if (window.emailjs) { emailjs.init(EMAILJS_PUBLIC_KEY); }
-
+      // ── Web3Forms Contact Form Submission ─────────────
       const form = document.getElementById("contact-form");
       const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
 
@@ -718,7 +1147,7 @@
         modal.setAttribute("aria-hidden", "false");
         setTimeout(() => modalOk && modalOk.focus(), 0);
         if (openModal.timer) clearTimeout(openModal.timer);
-        openModal.timer = setTimeout(closeModal, 3000);
+        openModal.timer = setTimeout(closeModal, 4000);
       }
       function closeModal() {
         if (!modal) return;
@@ -729,9 +1158,6 @@
 
       modalOk && modalOk.addEventListener("click", closeModal);
       modal && modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal && modal.classList.contains("is-open")) closeModal();
-      });
 
       function setLoading(on) {
         if (!submitBtn) return;
@@ -740,9 +1166,9 @@
         submitBtn.setAttribute("aria-busy", on ? "true" : "false");
         if (on) {
           submitBtn.dataset.originalText = submitBtn.textContent;
-          submitBtn.textContent = "Sending…";
+          submitBtn.textContent = "Sending Enquiry…";
         } else {
-          submitBtn.textContent = submitBtn.dataset.originalText || "Send Message →";
+          submitBtn.textContent = submitBtn.dataset.originalText || "Send Project Enquiry →";
         }
       }
 
@@ -752,35 +1178,76 @@
           e.preventDefault();
           const now = Date.now();
           if (now - lastSubmitAt < 10000) {
-            openModal("Hold on ⏳", "Please wait a few seconds before sending again.");
+            openModal("Hold on ⏳", "Please wait a few seconds before sending another enquiry.");
             return;
           }
           if (form.website && form.website.value.trim() !== "") {
-            openModal("Thanks!", "Your message has been noted.");
+            openModal("Enquiry Sent ✅", "Thank you for reaching out! I'll get back to you soon.");
             form.reset();
             return;
           }
           setLoading(true);
-          if (!window.emailjs) {
-            setLoading(false);
-            openModal("Error ❌", "EmailJS library not loaded.");
-            return;
-          }
-          emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form)
-            .then(() => {
-              lastSubmitAt = Date.now();
-              setLoading(false);
-              form.reset();
-              openModal("Message sent ✅", "Thanks! I'll get back to you soon.");
+          fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: new FormData(form)
+          })
+            .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                lastSubmitAt = Date.now();
+                setLoading(false);
+                form.reset();
+                openModal("Project Enquiry Sent ✅", "Thank you for reaching out! I'll review your requirements and get back to you shortly.");
+              } else {
+                setLoading(false);
+                openModal("Submission Error ❌", json.message || "Please try again in a moment or email me directly.");
+              }
             })
             .catch((err) => {
               console.error(err);
               setLoading(false);
-              openModal("Couldn't send ❌", "Please try again in a moment, or email me directly.");
+              openModal("Submission Error ❌", "Please try again in a moment, or email me directly at ranshkuswaha143@gmail.com.");
             });
         });
       }
+    });
+  </script>
 
+  <!-- ═══ CUSTOM CURSOR ═══ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorOutline = document.getElementById('cursorOutline');
+
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        window.addEventListener('mousemove', (e) => {
+          const posX = e.clientX;
+          const posY = e.clientY;
+
+          cursorDot.style.left = `${posX}px`;
+          cursorDot.style.top = `${posY}px`;
+
+          cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+          }, { duration: 500, fill: "forwards" });
+        });
+
+        const clickables = document.querySelectorAll('a, button, input, textarea, select, .nav-brand, .project-card, .btn, .faq-question');
+        clickables.forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+            cursorOutline.classList.add('hover');
+          });
+          el.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+            cursorOutline.classList.remove('hover');
+          });
+        });
+      }
     });
   </script>
 </body>
