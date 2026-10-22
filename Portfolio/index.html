@@ -812,16 +812,18 @@
           }, { duration: 500, fill: "forwards" });
         });
 
-        const clickables = document.querySelectorAll('a, button, input, textarea, .nav-brand, .project-card, .btn');
-        clickables.forEach((el) => {
-          el.addEventListener('mouseenter', () => {
+        document.addEventListener('mouseover', (e) => {
+          if (e.target.closest('a, button, input, textarea, select, .nav-brand, .project-card, .btn')) {
             cursorDot.classList.add('hover');
             cursorOutline.classList.add('hover');
-          });
-          el.addEventListener('mouseleave', () => {
+          }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+          if (e.target.closest('a, button, input, textarea, select, .nav-brand, .project-card, .btn')) {
             cursorDot.classList.remove('hover');
             cursorOutline.classList.remove('hover');
-          });
+          }
         });
       }
     });
