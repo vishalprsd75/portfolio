@@ -481,14 +481,6 @@
           </div>
         </div>
 
-        <!-- Train Controls Status -->
-        <div class="train-controls">
-          <button class="train-toggle-btn" id="trainToggleBtn" aria-label="Toggle train movement" title="Click to Pause or Resume train">
-            <span class="pulse-dot"></span>
-            <span id="trainStatusLabel">Continuous Train — Hover any project to pause</span>
-          </button>
-        </div>
-
         <div class="projects-more reveal">
           <a href="https://github.com/vishalprsd75" target="_blank" rel="noopener">
             Explore More Code Repositories on GitHub <span class="arrow">→</span>
@@ -1240,37 +1232,15 @@
 
       // ── Projects Continuous Train Marquee Controller ───
       const trainViewport = document.getElementById('projectsTrainViewport');
-      const trainToggleBtn = document.getElementById('trainToggleBtn');
-      const trainStatusLabel = document.getElementById('trainStatusLabel');
-
-      let isTrainManualPaused = false;
-
-      // Toggle Pause / Resume Button
-      if (trainToggleBtn && trainViewport) {
-        trainToggleBtn.addEventListener('click', () => {
-          isTrainManualPaused = !isTrainManualPaused;
-          trainViewport.classList.toggle('is-paused', isTrainManualPaused);
-          trainToggleBtn.classList.toggle('is-paused', isTrainManualPaused);
-          if (trainStatusLabel) {
-            trainStatusLabel.textContent = isTrainManualPaused
-              ? '⏸ Train Paused — Click to Resume'
-              : 'Continuous Train — Hover any project to pause';
-          }
-        });
-      }
 
       // Mobile Touch Handling (Pause on touch, resume on release)
       if (trainViewport) {
         trainViewport.addEventListener('touchstart', () => {
-          if (!isTrainManualPaused) {
-            trainViewport.classList.add('is-paused');
-          }
+          trainViewport.classList.add('is-paused');
         }, { passive: true });
 
         trainViewport.addEventListener('touchend', () => {
-          if (!isTrainManualPaused) {
-            trainViewport.classList.remove('is-paused');
-          }
+          trainViewport.classList.remove('is-paused');
         }, { passive: true });
       }
 

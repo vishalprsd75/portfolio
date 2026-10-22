@@ -1039,45 +1039,6 @@ a {
   flex-grow: 1;
 }
 
-/* ── Train Status Indicator & Interactive Pause/Play ──── */
-.train-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.2rem;
-}
-.train-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: var(--radius-full);
-  background: rgba(18, 18, 26, 0.8);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--duration-fast);
-}
-.train-toggle-btn:hover {
-  background: rgba(25, 25, 38, 0.95);
-  border-color: var(--accent-1);
-  color: var(--text-primary);
-}
-.train-toggle-btn .pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-1);
-  box-shadow: 0 0 10px var(--accent-1);
-  animation: pulse-glow 2s infinite;
-}
-.train-toggle-btn.is-paused .pulse-dot {
-  background: #f59e0b;
-  box-shadow: 0 0 10px #f59e0b;
-  animation: none;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
