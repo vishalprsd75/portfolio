@@ -313,116 +313,187 @@
           </div>
         </div>
 
-        <div class="projects-carousel reveal" id="projectsCarousel">
-          <div class="projects-carousel-wrapper">
-            <button class="carousel-nav-btn prev" id="projPrevBtn" aria-label="Previous Projects" title="Previous Project">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="15 18 9 12 15 6"></polyline>
-              </svg>
-            </button>
-
-            <div class="projects-carousel-viewport" id="projectsViewport">
-              <div class="projects-carousel-track" id="projectsTrack">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web-apps frontend">
-                  <div class="project-image">
-                    <img src="./images/pro-1.png" alt="Notes App — React Application" loading="lazy" />
-                    <div class="project-image-overlay">
-                      <a href="https://notes-mate.netlify.app/" class="project-overlay-btn live" target="_blank"
-                        rel="noopener">Live Demo</a>
-                      <button class="project-details-btn" onclick="openProjectModal('notes')">View Details</button>
-                    </div>
-                  </div>
-                  <div class="project-info">
-                    <div class="project-tags">
-                      <span class="project-tag">React</span>
-                      <span class="project-tag alt">JavaScript</span>
-                      <span class="project-tag">CSS</span>
-                    </div>
-                    <h3>Notes App</h3>
-                    <p>A feature-rich note-taking application supporting full CRUD operations, live state updates, and an
-                      intuitive user interface.</p>
+        <!-- Continuous Train Viewport (Edge-to-Edge) -->
+        <div class="projects-train-viewport reveal" id="projectsTrainViewport">
+          <div class="projects-train-track" id="projectsTrainTrack">
+            <!-- Train Group 1 (Carriages) -->
+            <div class="projects-train-group" id="trainGroup1">
+              <!-- Project 1 -->
+              <div class="project-card" data-category="web-apps frontend">
+                <div class="project-image">
+                  <img src="./images/pro-1.png" alt="Notes App — React Application" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://notes-mate.netlify.app/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('notes')">View Details</button>
                   </div>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="project-card" data-category="web-apps frontend">
-                  <div class="project-image">
-                    <img src="./images/pro-2.png" alt="SaaS Task Dashboard" loading="lazy" />
-                    <div class="project-image-overlay">
-                      <a href="https://vishal-taskflow.netlify.app/" class="project-overlay-btn live" target="_blank"
-                        rel="noopener">Live Demo</a>
-                      <button class="project-details-btn" onclick="openProjectModal('taskflow')">View Details</button>
-                    </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React</span>
+                    <span class="project-tag alt">JavaScript</span>
+                    <span class="project-tag">CSS</span>
                   </div>
-                  <div class="project-info">
-                    <div class="project-tags">
-                      <span class="project-tag">React</span>
-                      <span class="project-tag alt">CSS Variables</span>
-                      <span class="project-tag">Vite</span>
-                    </div>
-                    <h3>SaaS Task Dashboard</h3>
-                    <p>A modern task management dashboard with a custom design system, Kanban-style workflows, and theme
-                      customization.</p>
+                  <h3>Notes App</h3>
+                  <p>A feature-rich note-taking application supporting full CRUD operations, live state updates, and an intuitive user interface.</p>
+                </div>
+              </div>
+
+              <!-- Project 2 -->
+              <div class="project-card" data-category="web-apps frontend">
+                <div class="project-image">
+                  <img src="./images/pro-2.png" alt="SaaS Task Dashboard" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://vishal-taskflow.netlify.app/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('taskflow')">View Details</button>
                   </div>
                 </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-category="web-apps frontend full-stack">
-                  <div class="project-image">
-                    <img src="./images/pro-3.png" alt="Munna Dyeing Printing — Business Website & Product Showcase" loading="lazy" />
-                    <div class="project-image-overlay">
-                      <a href="https://munnadyeingprinting.com/" class="project-overlay-btn live" target="_blank"
-                        rel="noopener">Live Demo</a>
-                      <button class="project-details-btn" onclick="openProjectModal('munna')">View Details</button>
-                    </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React</span>
+                    <span class="project-tag alt">CSS Variables</span>
+                    <span class="project-tag">Vite</span>
                   </div>
-                  <div class="project-info">
-                    <div class="project-tags">
-                      <span class="project-tag">React 19</span>
-                      <span class="project-tag alt">Tailwind CSS</span>
-                      <span class="project-tag">Vite</span>
-                      <span class="project-tag alt">WhatsApp API</span>
-                    </div>
-                    <h3>Munna Dyeing Printing</h3>
-                    <p>A commercial client website & textile product showcase featuring interactive galleries, localized SEO schemas, and instant WhatsApp inquiry flows.</p>
+                  <h3>SaaS Task Dashboard</h3>
+                  <p>A modern task management dashboard with a custom design system, Kanban-style workflows, and theme customization.</p>
+                </div>
+              </div>
+
+              <!-- Project 3 -->
+              <div class="project-card" data-category="web-apps frontend full-stack">
+                <div class="project-image">
+                  <img src="./images/pro-3.png" alt="Munna Dyeing Printing — Business Website & Product Showcase" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://munnadyeingprinting.com/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('munna')">View Details</button>
                   </div>
                 </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React 19</span>
+                    <span class="project-tag alt">Tailwind CSS</span>
+                    <span class="project-tag">Vite</span>
+                    <span class="project-tag alt">WhatsApp API</span>
+                  </div>
+                  <h3>Munna Dyeing Printing</h3>
+                  <p>A commercial client website & textile product showcase featuring interactive galleries, localized SEO schemas, and instant WhatsApp inquiry flows.</p>
+                </div>
+              </div>
 
-                <!-- Project 4 -->
-                <div class="project-card" data-category="web-apps frontend full-stack">
-                  <div class="project-image">
-                    <img src="./images/pro-4.png" alt="BitNexTro Solutions — IT Corporate Portal & Custom Billing Engine" loading="lazy" />
-                    <div class="project-image-overlay">
-                      <a href="https://www.bitnextro.com/" class="project-overlay-btn live" target="_blank"
-                        rel="noopener">Live Demo</a>
-                      <button class="project-details-btn" onclick="openProjectModal('bitnextro')">View Details</button>
-                    </div>
+              <!-- Project 4 -->
+              <div class="project-card" data-category="web-apps frontend full-stack">
+                <div class="project-image">
+                  <img src="./images/pro-4.png" alt="BitNexTro Solutions — IT Corporate Portal & Custom Billing Engine" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://www.bitnextro.com/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('bitnextro')">View Details</button>
                   </div>
-                  <div class="project-info">
-                    <div class="project-tags">
-                      <span class="project-tag">React 19</span>
-                      <span class="project-tag alt">Tailwind CSS</span>
-                      <span class="project-tag">Billing Engine</span>
-                      <span class="project-tag alt">Vite</span>
-                    </div>
-                    <h3>BitNexTro Solutions</h3>
-                    <p>Enterprise IT services web platform with custom-engineered quotation workflows, proforma invoicing, and automated administrative billing modules.</p>
+                </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React 19</span>
+                    <span class="project-tag alt">Tailwind CSS</span>
+                    <span class="project-tag">Billing Engine</span>
+                    <span class="project-tag alt">Vite</span>
                   </div>
+                  <h3>BitNexTro Solutions</h3>
+                  <p>Enterprise IT services web platform with custom-engineered quotation workflows, proforma invoicing, and automated administrative billing modules.</p>
                 </div>
               </div>
             </div>
 
-            <button class="carousel-nav-btn next" id="projNextBtn" aria-label="Next Projects" title="Next Project">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </button>
-          </div>
+            <!-- Train Group 2 (Seamless Infinite Loop Duplicate) -->
+            <div class="projects-train-group" id="trainGroup2" aria-hidden="true">
+              <!-- Project 1 -->
+              <div class="project-card" data-category="web-apps frontend">
+                <div class="project-image">
+                  <img src="./images/pro-1.png" alt="Notes App — React Application" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://notes-mate.netlify.app/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('notes')">View Details</button>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React</span>
+                    <span class="project-tag alt">JavaScript</span>
+                    <span class="project-tag">CSS</span>
+                  </div>
+                  <h3>Notes App</h3>
+                  <p>A feature-rich note-taking application supporting full CRUD operations, live state updates, and an intuitive user interface.</p>
+                </div>
+              </div>
 
-          <div class="carousel-footer">
-            <div class="carousel-dots" id="projCarouselDots" role="tablist" aria-label="Project slide navigation"></div>
+              <!-- Project 2 -->
+              <div class="project-card" data-category="web-apps frontend">
+                <div class="project-image">
+                  <img src="./images/pro-2.png" alt="SaaS Task Dashboard" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://vishal-taskflow.netlify.app/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('taskflow')">View Details</button>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React</span>
+                    <span class="project-tag alt">CSS Variables</span>
+                    <span class="project-tag">Vite</span>
+                  </div>
+                  <h3>SaaS Task Dashboard</h3>
+                  <p>A modern task management dashboard with a custom design system, Kanban-style workflows, and theme customization.</p>
+                </div>
+              </div>
+
+              <!-- Project 3 -->
+              <div class="project-card" data-category="web-apps frontend full-stack">
+                <div class="project-image">
+                  <img src="./images/pro-3.png" alt="Munna Dyeing Printing — Business Website & Product Showcase" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://munnadyeingprinting.com/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('munna')">View Details</button>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React 19</span>
+                    <span class="project-tag alt">Tailwind CSS</span>
+                    <span class="project-tag">Vite</span>
+                    <span class="project-tag alt">WhatsApp API</span>
+                  </div>
+                  <h3>Munna Dyeing Printing</h3>
+                  <p>A commercial client website & textile product showcase featuring interactive galleries, localized SEO schemas, and instant WhatsApp inquiry flows.</p>
+                </div>
+              </div>
+
+              <!-- Project 4 -->
+              <div class="project-card" data-category="web-apps frontend full-stack">
+                <div class="project-image">
+                  <img src="./images/pro-4.png" alt="BitNexTro Solutions — IT Corporate Portal & Custom Billing Engine" loading="lazy" />
+                  <div class="project-image-overlay">
+                    <a href="https://www.bitnextro.com/" class="project-overlay-btn live" target="_blank" rel="noopener">Live Demo</a>
+                    <button class="project-details-btn" onclick="openProjectModal('bitnextro')">View Details</button>
+                  </div>
+                </div>
+                <div class="project-info">
+                  <div class="project-tags">
+                    <span class="project-tag">React 19</span>
+                    <span class="project-tag alt">Tailwind CSS</span>
+                    <span class="project-tag">Billing Engine</span>
+                    <span class="project-tag alt">Vite</span>
+                  </div>
+                  <h3>BitNexTro Solutions</h3>
+                  <p>Enterprise IT services web platform with custom-engineered quotation workflows, proforma invoicing, and automated administrative billing modules.</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <!-- Train Controls Status -->
+        <div class="train-controls">
+          <button class="train-toggle-btn" id="trainToggleBtn" aria-label="Toggle train movement" title="Click to Pause or Resume train">
+            <span class="pulse-dot"></span>
+            <span id="trainStatusLabel">Continuous Train — Hover any project to pause</span>
+          </button>
         </div>
 
         <div class="projects-more reveal">
@@ -1174,196 +1245,14 @@
         }
       });
 
-      // ── Projects Autoplay Carousel ────────────────────
-      const carouselTrack = document.getElementById('projectsTrack');
-      const carouselViewport = document.getElementById('projectsViewport');
-      const prevBtn = document.getElementById('projPrevBtn');
-      const nextBtn = document.getElementById('projNextBtn');
-      const dotsContainer = document.getElementById('projCarouselDots');
+      // ── Projects Continuous Train Marquee Controller ───
+      const trainViewport = document.getElementById('projectsTrainViewport');
+      const trainToggleBtn = document.getElementById('trainToggleBtn');
+      const trainStatusLabel = document.getElementById('trainStatusLabel');
       const filterBtns = document.querySelectorAll('.filter-btn');
-      const projectCards = document.querySelectorAll('.projects-carousel-track .project-card');
+      const allTrainCards = document.querySelectorAll('.projects-train-viewport .project-card');
 
-      let currentSlide = 0;
-      let autoplayInterval = null;
-      const AUTOPLAY_DELAY = 3500;
-
-      function getVisibleCards() {
-        return Array.from(projectCards).filter(c => !c.classList.contains('carousel-card-hidden'));
-      }
-
-      function getCardsPerView() {
-        return window.innerWidth > 900 ? 2 : 1;
-      }
-
-      function getMaxIndex() {
-        const visible = getVisibleCards();
-        const perView = getCardsPerView();
-        return Math.max(0, visible.length - perView);
-      }
-
-      function updateCarousel(instant = false) {
-        if (!carouselTrack) return;
-        const visible = getVisibleCards();
-        if (visible.length === 0) return;
-
-        const maxIdx = getMaxIndex();
-        if (currentSlide > maxIdx) {
-          currentSlide = maxIdx;
-        }
-
-        const gap = parseFloat(window.getComputedStyle(carouselTrack).gap) || 28;
-        const firstCard = visible[0];
-        if (firstCard) {
-          const cardWidth = firstCard.offsetWidth;
-          const shift = currentSlide * (cardWidth + gap);
-          if (instant) {
-            carouselTrack.style.transition = 'none';
-            carouselTrack.style.transform = `translateX(-${shift}px)`;
-            carouselTrack.offsetHeight; // force reflow
-            carouselTrack.style.transition = '';
-          } else {
-            carouselTrack.style.transform = `translateX(-${shift}px)`;
-          }
-        }
-
-        updateControlsState();
-      }
-
-      function renderDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = '';
-        const maxIdx = getMaxIndex();
-
-        if (maxIdx <= 0) {
-          dotsContainer.style.display = 'none';
-          if (prevBtn) prevBtn.style.opacity = '0.3';
-          if (nextBtn) nextBtn.style.opacity = '0.3';
-          return;
-        }
-
-        dotsContainer.style.display = 'flex';
-        if (prevBtn) prevBtn.style.opacity = '1';
-        if (nextBtn) nextBtn.style.opacity = '1';
-
-        const totalDots = maxIdx + 1;
-        for (let i = 0; i < totalDots; i++) {
-          const dot = document.createElement('button');
-          dot.className = 'carousel-dot' + (i === currentSlide ? ' active' : '');
-          dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-          dot.setAttribute('role', 'tab');
-          dot.setAttribute('aria-selected', i === currentSlide ? 'true' : 'false');
-          dot.addEventListener('click', () => {
-            currentSlide = i;
-            updateCarousel();
-            resetAutoplay();
-          });
-          dotsContainer.appendChild(dot);
-        }
-      }
-
-      function updateControlsState() {
-        if (!dotsContainer) return;
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, i) => {
-          const isActive = (i === currentSlide);
-          dot.classList.toggle('active', isActive);
-          dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-      }
-
-      function nextSlide() {
-        const maxIdx = getMaxIndex();
-        if (maxIdx <= 0) return;
-        currentSlide = (currentSlide >= maxIdx) ? 0 : currentSlide + 1;
-        updateCarousel();
-      }
-
-      function prevSlide() {
-        const maxIdx = getMaxIndex();
-        if (maxIdx <= 0) return;
-        currentSlide = (currentSlide <= 0) ? maxIdx : currentSlide - 1;
-        updateCarousel();
-      }
-
-      function startAutoplay() {
-        stopAutoplay();
-        if (getMaxIndex() <= 0) return;
-        autoplayInterval = setInterval(() => {
-          nextSlide();
-        }, AUTOPLAY_DELAY);
-      }
-
-      function stopAutoplay() {
-        if (autoplayInterval) {
-          clearInterval(autoplayInterval);
-          autoplayInterval = null;
-        }
-      }
-
-      function resetAutoplay() {
-        stopAutoplay();
-        startAutoplay();
-      }
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          prevSlide();
-          resetAutoplay();
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          nextSlide();
-          resetAutoplay();
-        });
-      }
-
-      // Hover to Pause
-      const carouselContainer = document.getElementById('projectsCarousel');
-      if (carouselContainer) {
-        carouselContainer.addEventListener('mouseenter', stopAutoplay);
-        carouselContainer.addEventListener('mouseleave', startAutoplay);
-        carouselContainer.addEventListener('focusin', stopAutoplay);
-        carouselContainer.addEventListener('focusout', startAutoplay);
-      }
-
-      // Document Visibility Change (pause autoplay when tab is inactive)
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-          stopAutoplay();
-        } else {
-          startAutoplay();
-        }
-      });
-
-      // Touch / Swipe Handling
-      if (carouselViewport) {
-        let touchStartX = 0;
-        let touchStartY = 0;
-
-        carouselViewport.addEventListener('touchstart', (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-          touchStartY = e.changedTouches[0].screenY;
-          stopAutoplay();
-        }, { passive: true });
-
-        carouselViewport.addEventListener('touchend', (e) => {
-          const touchEndX = e.changedTouches[0].screenX;
-          const touchEndY = e.changedTouches[0].screenY;
-          const diffX = touchStartX - touchEndX;
-          const diffY = touchStartY - touchEndY;
-
-          if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
-            if (diffX > 0) {
-              nextSlide();
-            } else {
-              prevSlide();
-            }
-          }
-          startAutoplay();
-        }, { passive: true });
-      }
+      let isTrainManualPaused = false;
 
       // Category Filtering Integration
       filterBtns.forEach(btn => {
@@ -1372,33 +1261,42 @@
           btn.classList.add('active');
 
           const filter = btn.getAttribute('data-filter');
-          projectCards.forEach(card => {
+          allTrainCards.forEach(card => {
             const categories = card.getAttribute('data-category') || '';
             const matches = (filter === 'all' || categories.includes(filter));
-            card.classList.toggle('carousel-card-hidden', !matches);
+            card.classList.toggle('train-card-hidden', !matches);
           });
-
-          currentSlide = 0;
-          renderDots();
-          updateCarousel(true);
-          resetAutoplay();
         });
       });
 
-      // Window Resize Listener
-      let resizeTimer = null;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          renderDots();
-          updateCarousel(true);
-        }, 150);
-      });
+      // Toggle Pause / Resume Button
+      if (trainToggleBtn && trainViewport) {
+        trainToggleBtn.addEventListener('click', () => {
+          isTrainManualPaused = !isTrainManualPaused;
+          trainViewport.classList.toggle('is-paused', isTrainManualPaused);
+          trainToggleBtn.classList.toggle('is-paused', isTrainManualPaused);
+          if (trainStatusLabel) {
+            trainStatusLabel.textContent = isTrainManualPaused
+              ? '⏸ Train Paused — Click to Resume'
+              : 'Continuous Train — Hover any project to pause';
+          }
+        });
+      }
 
-      // Initial Carousel Setup
-      renderDots();
-      updateCarousel(true);
-      startAutoplay();
+      // Mobile Touch Handling (Pause on touch, resume on release)
+      if (trainViewport) {
+        trainViewport.addEventListener('touchstart', () => {
+          if (!isTrainManualPaused) {
+            trainViewport.classList.add('is-paused');
+          }
+        }, { passive: true });
+
+        trainViewport.addEventListener('touchend', () => {
+          if (!isTrainManualPaused) {
+            trainViewport.classList.remove('is-paused');
+          }
+        }, { passive: true });
+      }
 
       // ── FAQ Accordion ─────────────────────────────────
       const faqItems = document.querySelectorAll('.faq-item');
