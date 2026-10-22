@@ -304,13 +304,6 @@
             A selection of projects demonstrating my ability to build clean, functional, and responsive web
             applications.
           </p>
-          <!-- Category Filters -->
-          <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All Work</button>
-            <button class="filter-btn" data-filter="web-apps">Web Applications</button>
-            <button class="filter-btn" data-filter="full-stack">Full Stack & E-Commerce</button>
-            <button class="filter-btn" data-filter="frontend">Frontend UI</button>
-          </div>
         </div>
 
         <!-- Continuous Train Viewport (Edge-to-Edge) -->
@@ -1249,25 +1242,8 @@
       const trainViewport = document.getElementById('projectsTrainViewport');
       const trainToggleBtn = document.getElementById('trainToggleBtn');
       const trainStatusLabel = document.getElementById('trainStatusLabel');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const allTrainCards = document.querySelectorAll('.projects-train-viewport .project-card');
 
       let isTrainManualPaused = false;
-
-      // Category Filtering Integration
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const filter = btn.getAttribute('data-filter');
-          allTrainCards.forEach(card => {
-            const categories = card.getAttribute('data-category') || '';
-            const matches = (filter === 'all' || categories.includes(filter));
-            card.classList.toggle('train-card-hidden', !matches);
-          });
-        });
-      });
 
       // Toggle Pause / Resume Button
       if (trainToggleBtn && trainViewport) {

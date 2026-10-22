@@ -1402,33 +1402,8 @@ a {
 }
 
 /* ══════════════════════════════════════════════════════════
-   PROJECT CATEGORY FILTERS & MODAL
+   PROJECT DETAILS & MODAL
    ══════════════════════════════════════════════════════════ */
-.project-filters {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  padding: 0.5rem 1.3rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: var(--bg-card);
-  color: var(--text-secondary);
-  border: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: all var(--duration-fast) var(--ease-smooth);
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--accent-1);
-  color: var(--bg-primary);
-  border-color: var(--accent-1);
-  box-shadow: 0 4px 15px rgba(0, 212, 170, 0.25);
-}
 
 .project-details-btn {
   padding: 0.45rem 1rem;
