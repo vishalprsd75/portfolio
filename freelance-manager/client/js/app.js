@@ -13,6 +13,8 @@ const state = {
   settings: {},
 };
 
+let isDeleting = false;
+
 // ── API Fetch Helper ──────────────────────────────────────
 async function api(endpoint, options = {}) {
   const defaults = {
@@ -338,8 +340,8 @@ async function loadClients() {
         <td>${c._count?.documents || 0}</td>
         <td>
           <div style="display:flex; gap:6px;">
-            <button type="button" class="btn btn-secondary btn-sm" data-action="edit-client" data-id="${c.id}" onclick="editClient('${c.id}')">Edit</button>
-            <button type="button" class="btn btn-danger btn-sm" data-action="delete-client" data-id="${c.id}" onclick="deleteClient('${c.id}')" title="Delete Client">&times;</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-action="edit-client" data-id="${c.id}">Edit</button>
+            <button type="button" class="btn btn-danger btn-sm" data-action="delete-client" data-id="${c.id}" title="Delete Client">&times;</button>
           </div>
         </td>
       `;
@@ -372,8 +374,10 @@ window.editClient = function (id) {
 };
 
 window.deleteClient = async function (id) {
-  if (!confirm('Are you sure you want to delete this client?')) return;
+  if (isDeleting) return;
+  isDeleting = true;
   try {
+    if (!confirm('Are you sure you want to delete this client?')) return;
     await api(`/clients/${id}`, { method: 'DELETE' });
     showToast('Client deleted successfully');
     loadClients();
@@ -381,6 +385,8 @@ window.deleteClient = async function (id) {
     loadDashboard();
   } catch (err) {
     showToast(err.message, 'error');
+  } finally {
+    isDeleting = false;
   }
 };
 
@@ -476,8 +482,8 @@ async function loadProjects() {
         <td>${p.deadline ? new Date(p.deadline).toLocaleDateString() : '—'}</td>
         <td>
           <div style="display:flex; gap:6px;">
-            <button type="button" class="btn btn-secondary btn-sm" data-action="edit-project" data-id="${p.id}" onclick="editProject('${p.id}')">Edit</button>
-            <button type="button" class="btn btn-danger btn-sm" data-action="delete-project" data-id="${p.id}" onclick="deleteProject('${p.id}')" title="Delete Project">&times;</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-action="edit-project" data-id="${p.id}">Edit</button>
+            <button type="button" class="btn btn-danger btn-sm" data-action="delete-project" data-id="${p.id}" title="Delete Project">&times;</button>
           </div>
         </td>
       `;
@@ -512,8 +518,10 @@ window.editProject = function (id) {
 };
 
 window.deleteProject = async function (id) {
-  if (!confirm('Are you sure you want to delete this project?')) return;
+  if (isDeleting) return;
+  isDeleting = true;
   try {
+    if (!confirm('Are you sure you want to delete this project?')) return;
     await api(`/projects/${id}`, { method: 'DELETE' });
     showToast('Project deleted successfully');
     loadProjects();
@@ -521,6 +529,8 @@ window.deleteProject = async function (id) {
     loadDashboard();
   } catch (err) {
     showToast(err.message, 'error');
+  } finally {
+    isDeleting = false;
   }
 };
 
@@ -615,10 +625,10 @@ async function loadDocuments() {
         <td><span class="badge ${badgeClass}">${escapeHtml(d.status)}</span></td>
         <td>
           <div style="display:flex; gap:6px;">
-            <button type="button" class="btn btn-secondary btn-sm" data-action="edit-doc" data-id="${d.id}" onclick="editDoc('${d.id}')" title="Edit Document">Edit</button>
-            <button type="button" class="btn btn-secondary btn-sm" data-action="view-doc" data-id="${d.id}" onclick="previewDoc('${d.id}')" title="View Print HTML">View</button>
-            <button type="button" class="btn btn-outline btn-sm" data-action="pdf-doc" data-id="${d.id}" onclick="downloadDoc('${d.id}')" title="Download PDF">PDF</button>
-            <button type="button" class="btn btn-danger btn-sm" data-action="delete-doc" data-id="${d.id}" onclick="deleteDoc('${d.id}')" title="Delete">&times;</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-action="edit-doc" data-id="${d.id}" title="Edit Document">Edit</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-action="view-doc" data-id="${d.id}" title="View Print HTML">View</button>
+            <button type="button" class="btn btn-outline btn-sm" data-action="pdf-doc" data-id="${d.id}" title="Download PDF">PDF</button>
+            <button type="button" class="btn btn-danger btn-sm" data-action="delete-doc" data-id="${d.id}" title="Delete">&times;</button>
           </div>
         </td>
       `;
@@ -643,13 +653,18 @@ window.downloadDoc = function (id) {
 };
 
 window.deleteDoc = async function (id) {
-  if (!confirm('Are you sure you want to delete this document?')) return;
+  if (isDeleting) return;
+  isDeleting = true;
   try {
+    if (!confirm('Are you sure you want to delete this document?')) return;
     await api(`/documents/${id}`, { method: 'DELETE' });
     showToast('Document deleted');
     loadDocuments();
+    loadDashboard();
   } catch (err) {
     showToast(err.message, 'error');
+  } finally {
+    isDeleting = false;
   }
 };
 
@@ -873,7 +888,7 @@ async function loadPayments() {
         <td style="font-family:'JetBrains Mono',monospace; font-size:12px;">${escapeHtml(p.transactionRef || '—')}</td>
         <td><span class="badge badge-draft">${escapeHtml(allocText)}</span></td>
         <td>
-          <button type="button" class="btn btn-danger btn-sm" data-action="delete-payment" data-id="${p.id}" onclick="deletePayment('${p.id}')">Delete</button>
+          <button type="button" class="btn btn-danger btn-sm" data-action="delete-payment" data-id="${p.id}">Delete</button>
         </td>
       `;
       tbody.appendChild(tr);
@@ -988,14 +1003,18 @@ document.getElementById('form-payment')?.addEventListener('submit', async (e) =>
 });
 
 window.deletePayment = async function (id) {
-  if (!confirm('Are you sure you want to delete this payment? Invoice balances will be restored.')) return;
+  if (isDeleting) return;
+  isDeleting = true;
   try {
+    if (!confirm('Are you sure you want to delete this payment? Invoice balances will be restored.')) return;
     await api(`/payments/${id}`, { method: 'DELETE' });
     showToast('Payment deleted');
     loadPayments();
     loadDashboard();
   } catch (err) {
     showToast(err.message, 'error');
+  } finally {
+    isDeleting = false;
   }
 };
 
@@ -1099,6 +1118,9 @@ window.fillDemoCredentials = fillDemoCredentials;
 document.addEventListener('click', (e) => {
   const btn = e.target.closest('button, .btn, .modal-close');
   if (!btn) return;
+
+  // Prevent double-firing if button already handled by an inline onclick handler
+  if (btn.hasAttribute('onclick')) return;
 
   // 1. Modal close button
   if (btn.classList.contains('modal-close')) {
