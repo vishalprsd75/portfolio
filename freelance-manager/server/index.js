@@ -143,7 +143,10 @@ app.use('/api/v1/pdf', apiLimiter, requireAuth, pdfRouter);
 
 // ── Static Files (Client SPA) ─────────────────────────────
 app.use(express.static(join(__dirname, '..', 'client'), {
-  maxAge: isProduction ? '1d' : 0,
+  maxAge: 0,
+  setHeaders: (res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  },
 }));
 
 // ── SPA Fallback ──────────────────────────────────────────
