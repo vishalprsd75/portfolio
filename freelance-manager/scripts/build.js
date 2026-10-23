@@ -11,7 +11,17 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const schemaPath = path.join(__dirname, '..', 'prisma', 'schema.prisma');
 
-const dbUrl = process.env.DATABASE_URL || '';
+// Find PostgreSQL URL from standard Vercel / Neon env vars
+const dbUrl = process.env.DATABASE_URL ||
+  process.env.POSTGRES_PRISMA_URL ||
+  process.env.POSTGRES_URL ||
+  process.env.STORAGE_URL ||
+  Object.keys(process.env).find(k => k.endsWith('_URL') && (process.env[k]?.startsWith('postgres://') || process.env[k]?.startsWith('postgresql://'))) ? process.env[Object.keys(process.env).find(k => k.endsWith('_URL') && (process.env[k]?.startsWith('postgres://') || process.env[k]?.startsWith('postgresql://')))] : '';
+
+if (dbUrl && !process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = dbUrl;
+}
+
 const isPostgres = dbUrl.startsWith('postgres://') || dbUrl.startsWith('postgresql://');
 
 let content = fs.readFileSync(schemaPath, 'utf8');

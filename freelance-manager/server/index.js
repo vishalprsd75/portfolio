@@ -30,8 +30,18 @@ const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3500;
-const isProduction = process.env.NODE_ENV === 'production';
-const dbUrl = process.env.DATABASE_URL || '';
+const dbUrl = process.env.DATABASE_URL ||
+  process.env.POSTGRES_PRISMA_URL ||
+  process.env.POSTGRES_URL ||
+  process.env.STORAGE_URL ||
+  (Object.keys(process.env).find(k => k.endsWith('_URL') && (process.env[k]?.startsWith('postgres://') || process.env[k]?.startsWith('postgresql://')))
+    ? process.env[Object.keys(process.env).find(k => k.endsWith('_URL') && (process.env[k]?.startsWith('postgres://') || process.env[k]?.startsWith('postgresql://')))]
+    : '');
+
+if (dbUrl && !process.env.DATABASE_URL) {
+  process.env.DATABASE_URL = dbUrl;
+}
+
 const isPostgres = dbUrl.startsWith('postgres://') || dbUrl.startsWith('postgresql://');
 
 // Trust reverse proxy (Vercel, Render, Cloudflare, NGINX)
