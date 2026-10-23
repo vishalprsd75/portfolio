@@ -21,10 +21,7 @@ if (dbUrl && !process.env.DATABASE_URL) {
 }
 
 const prisma = new PrismaClient({
-  ...(dbUrl ? {
-    datasourceUrl: dbUrl,
-    datasources: { db: { url: dbUrl } },
-  } : {}),
+  ...(dbUrl ? { datasourceUrl: dbUrl } : {}),
   log: ['error'],
 });
 
