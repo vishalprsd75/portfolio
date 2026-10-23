@@ -214,14 +214,6 @@ document.getElementById('auth-form')?.addEventListener('submit', async (e) => {
   }
 });
 
-function fillDemoCredentials() {
-  const emailInput = document.getElementById('auth-email');
-  const passInput = document.getElementById('auth-password');
-  if (emailInput) emailInput.value = 'vishalprasad7505@gmail.com';
-  if (passInput) passInput.value = 'Admin@123456';
-  showToast('Demo credentials filled');
-}
-
 // ── Load Shared Settings ──────────────────────────────────
 async function loadSettings() {
   try {
@@ -1112,7 +1104,6 @@ window.deletePayment = deletePayment;
 window.submitDocument = submitDocument;
 window.addLineItemRow = addLineItemRow;
 window.updateDocumentTotals = updateDocumentTotals;
-window.fillDemoCredentials = fillDemoCredentials;
 
 // Global Unified Click Event Delegation
 document.addEventListener('click', (e) => {
