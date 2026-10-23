@@ -169,12 +169,10 @@ app.use((err, req, res, next) => {
   res.status(statusCode).json({ error: message });
 });
 
-// ── Start Server (Only when not in Vercel serverless environment) ─
-if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
-    console.log(`\n  ⚡ Freelance Manager running at http://localhost:${PORT}\n`);
-  });
-}
+// ── Start Server ──────────────────────────────────────────
+app.listen(PORT, () => {
+  console.log(`\n  ⚡ Freelance Manager running at port ${PORT}\n`);
+});
 
 // ── Graceful Shutdown ─────────────────────────────────────
 process.on('SIGTERM', async () => {

@@ -12,12 +12,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const schemaPath = path.join(__dirname, '..', 'prisma', 'schema.prisma');
 
 // Find PostgreSQL URL from standard Vercel / Neon env vars
-const dbUrl = process.env.DATABASE_URL ||
-  process.env.POSTGRES_PRISMA_URL ||
-  process.env.POSTGRES_URL ||
-  process.env.STORAGE_URL ||
-  Object.keys(process.env).find(k => k.endsWith('_URL') && (process.env[k]?.startsWith('postgres://') || process.env[k]?.startsWith('postgresql://'))) ? process.env[Object.keys(process.env).find(k => k.endsWith('_URL') && (process.env[k]?.startsWith('postgres://') || process.env[k]?.startsWith('postgresql://')))] : '';
+function getDatabaseUrl() {
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
+  if (process.env.POSTGRES_PRISMA_URL) return process.env.POSTGRES_PRISMA_URL;
+  if (process.env.POSTGRES_URL) return process.env.POSTGRES_URL;
+  if (process.env.STORAGE_URL) return process.env.STORAGE_URL;
+  for (const [k, v] of Object.entries(process.env)) {
+    if (typeof v === 'string' && (v.startsWith('postgres://') || v.startsWith('postgresql://'))) {
+      return v;
+    }
+  }
+  return '';
+}
 
+const dbUrl = getDatabaseUrl();
 if (dbUrl && !process.env.DATABASE_URL) {
   process.env.DATABASE_URL = dbUrl;
 }
