@@ -8,7 +8,7 @@
     "dev": "node --watch server/index.js",
     "build": "node scripts/build.js",
     "postinstall": "prisma generate || true",
-    "start": "node server/index.js",
+    "start": "node scripts/build.js && node server/index.js",
     "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
     "db:push": "npx prisma db push",

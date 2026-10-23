@@ -160,12 +160,8 @@ app.use((err, req, res, next) => {
   console.error('[ERROR]', err.message);
   if (!isProduction) console.error(err.stack);
 
-  // Don't leak internal errors to client
   const statusCode = err.statusCode || 500;
-  const message = isProduction && statusCode === 500
-    ? 'Internal server error'
-    : err.message;
-
+  const message = err.message || 'Internal server error';
   res.status(statusCode).json({ error: message });
 });
 
