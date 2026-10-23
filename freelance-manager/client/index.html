@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Business Manager — Vishal Prasad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+  <!-- ── AUTH / SETUP OVERLAY ──────────────────────────────── -->
+  <div id="auth-screen" style="display:none; position:fixed; inset:0; background:var(--bg-primary); z-index:2000; align-items:center; justify-content:center;">
+    <div style="width:100%; max-width:420px; padding:32px; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); box-shadow:var(--shadow-md);">
+      <div style="text-align:center; margin-bottom:28px;">
+        <h2 id="auth-title" style="font-size:22px; margin-bottom:8px; background:var(--gradient-main); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Freelance Manager</h2>
+        <p id="auth-subtitle" style="font-size:13px; color:var(--text-secondary);">Sign in to your private business portal</p>
+      </div>
+
+      <form id="auth-form">
+        <div id="setup-name-field" class="form-group" style="display:none;">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="auth-name" class="form-input" placeholder="Vishal Prasad">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="auth-email" class="form-input" placeholder="vishalprasad7505@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="auth-password" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" id="auth-submit-btn" class="btn btn-primary" style="width:100%; margin-top:8px;">Sign In</button>
+        <div id="auth-demo-hint" style="margin-top:16px; text-align:center; font-size:12px; color:var(--text-muted);">
+          <span>Default: </span><code style="color:var(--accent-1); font-size:11px;">vishalprasad7505@gmail.com</code> / <code style="color:var(--accent-1); font-size:11px;">Admin@123456</code>
+          <div style="margin-top:8px;">
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-fill-demo" style="font-size:11px; padding:4px 10px;" onclick="fillDemoCredentials()">Auto-Fill Credentials</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MAIN APP SHELL ────────────────────────────────────── -->
+  <div id="app-container" style="display:none;">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>VP Freelance</span>
+        </div>
+      </div>
+
+      <div class="sidebar-nav">
+        <div class="nav-section-title">Overview</div>
+        <div class="nav-item active" data-view="dashboard">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Dashboard</span>
+        </div>
+
+        <div class="nav-section-title">Operations</div>
+        <div class="nav-item" data-view="clients">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Clients</span>
+        </div>
+        <div class="nav-item" data-view="projects">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span>Projects</span>
+        </div>
+
+        <div class="nav-section-title">Financials</div>
+        <div class="nav-item" data-view="documents">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Documents</span>
+        </div>
+        <div class="nav-item" data-view="payments">
+          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>Payments</span>
+        </div>
+
+        <div class="nav-section-title">System</div>
+        <div class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-snippet">
+          <div class="user-avatar" id="user-avatar">VP</div>
+          <div class="user-info">
+            <div class="user-name" id="user-name">Vishal Prasad</div>
+            <div class="user-role">Owner</div>
+          </div>
+        </div>
+        <button type="button" class="btn-icon" id="logout-btn" onclick="handleLogout()" title="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" class="mobile-menu-btn" id="mobile-menu-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-title" id="page-title">Dashboard</div>
+        </div>
+        <div class="topbar-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-quick-client" onclick="openClientModal()">+ Client</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-quick-payment" onclick="openPaymentModal()">+ Payment</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-quick-doc" onclick="openDocumentModal()">+ New Document</button>
+        </div>
+      </header>
+
+      <main class="content-body">
+        <!-- ── VIEW 1: DASHBOARD ──────────────────────────────── -->
+        <section id="view-dashboard" class="app-view">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-title">
+                <span>Total Collected</span>
+                <span class="kpi-badge positive">All-Time</span>
+              </div>
+              <div class="kpi-value" id="kpi-revenue">₹0.00</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-title">
+                <span>Outstanding Balance</span>
+                <span class="kpi-badge warning" id="kpi-overdue-count">0 Overdue</span>
+              </div>
+              <div class="kpi-value" id="kpi-receivables">₹0.00</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-title">
+                <span>Active Projects</span>
+                <span class="kpi-badge positive">Active</span>
+              </div>
+              <div class="kpi-value" id="kpi-active-projects">0</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-title">
+                <span>Total Clients</span>
+                <span class="kpi-badge">Directory</span>
+              </div>
+              <div class="kpi-value" id="kpi-clients">0</div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; margin-bottom:28px;">
+            <!-- Revenue Bars -->
+            <div class="table-card" style="margin-bottom:0; padding:22px;">
+              <h3 style="font-size:15px; margin-bottom:16px;">Revenue Trend (Last 6 Months)</h3>
+              <div id="revenue-bars-container" style="display:flex; align-items:flex-end; gap:16px; height:180px; padding-top:20px;">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+
+            <!-- Upcoming Deadlines -->
+            <div class="table-card" style="margin-bottom:0; padding:22px;">
+              <h3 style="font-size:15px; margin-bottom:16px;">Upcoming Deadlines</h3>
+              <div id="upcoming-deadlines-list" style="display:flex; flex-direction:column; gap:12px;">
+                <p style="color:var(--text-muted); font-size:13px;">No upcoming project deadlines.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity Log -->
+          <div class="table-card">
+            <div class="table-header">
+              <div class="table-title">Recent Activity Audit Trail</div>
+            </div>
+            <div id="activity-log-list" style="padding:16px 22px;">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ── VIEW 2: CLIENTS ────────────────────────────────── -->
+        <section id="view-clients" class="app-view" style="display:none;">
+          <div class="table-card">
+            <div class="table-header">
+              <div class="table-title">Client Directory</div>
+              <div class="table-filters">
+                <input type="text" id="client-search" class="search-input" placeholder="Search name, company, email...">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-add-client" onclick="openClientModal()">+ Add Client</button>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Contact Info</th>
+                  <th>Status</th>
+                  <th>Projects</th>
+                  <th>Documents</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clients-table-body">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── VIEW 3: PROJECTS ───────────────────────────────── -->
+        <section id="view-projects" class="app-view" style="display:none;">
+          <div class="table-card">
+            <div class="table-header">
+              <div class="table-title">Client Projects</div>
+              <div class="table-filters">
+                <input type="text" id="project-search" class="search-input" placeholder="Search projects...">
+                <select id="project-status-filter" class="select-filter">
+                  <option value="">All Statuses</option>
+                  <option value="LEAD">Lead</option>
+                  <option value="QUOTATION_SENT">Quotation Sent</option>
+                  <option value="APPROVED">Approved</option>
+                  <option value="IN_PROGRESS">In Progress</option>
+                  <option value="COMPLETED">Completed</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-add-project" onclick="openProjectModal()">+ Add Project</button>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Project Name</th>
+                  <th>Client</th>
+                  <th>Status</th>
+                  <th>Agreed Budget</th>
+                  <th>Deadline</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="projects-table-body">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── VIEW 4: DOCUMENTS ──────────────────────────────── -->
+        <section id="view-documents" class="app-view" style="display:none;">
+          <div class="table-card">
+            <div class="table-header">
+              <div class="table-title">Business Documents</div>
+              <div class="table-filters">
+                <select id="doc-type-filter" class="select-filter">
+                  <option value="">All Document Types</option>
+                  <option value="QUOTATION">Quotations</option>
+                  <option value="AGREEMENT">Agreements</option>
+                  <option value="INVOICE">Invoices</option>
+                  <option value="RECEIPT">Receipts</option>
+                  <option value="HANDOVER">Handovers</option>
+                </select>
+                <select id="doc-status-filter" class="select-filter">
+                  <option value="">All Statuses</option>
+                  <option value="DRAFT">Draft</option>
+                  <option value="ISSUED">Issued</option>
+                  <option value="ACCEPTED">Accepted</option>
+                  <option value="CANCELLED">Cancelled</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-sm" id="btn-create-document" onclick="openDocumentModal()">+ Create Document</button>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Number</th>
+                  <th>Type</th>
+                  <th>Client</th>
+                  <th>Issue Date</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="documents-table-body">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── VIEW 5: PAYMENTS ───────────────────────────────── -->
+        <section id="view-payments" class="app-view" style="display:none;">
+          <div class="table-card">
+            <div class="table-header">
+              <div class="table-title">Payment Transactions</div>
+              <div class="table-filters">
+                <button type="button" class="btn btn-primary btn-sm" id="btn-record-payment" onclick="openPaymentModal()">+ Record Payment</button>
+              </div>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Client</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Reference</th>
+                  <th>Allocated Invoices</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="payments-table-body">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── VIEW 6: SETTINGS ───────────────────────────────── -->
+        <section id="view-settings" class="app-view" style="display:none;">
+          <form id="settings-form" class="table-card" style="padding:24px;">
+            <div style="margin-bottom:24px; border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
+              <h3 style="font-size:16px;">Business & Identity</h3>
+              <p style="font-size:12px; color:var(--text-muted);">Configures document headers, emails, and PDFs</p>
+            </div>
+
+            <div class="form-grid col-3">
+              <div class="form-group">
+                <label class="form-label">Business Name</label>
+                <input type="text" id="set-businessName" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Contact Email</label>
+                <input type="email" id="set-email" class="form-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="text" id="set-phone" class="form-input">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Business Address</label>
+              <input type="text" id="set-address" class="form-input">
+            </div>
+
+            <div style="margin:28px 0 24px; border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
+              <h3 style="font-size:16px;">Financial & Tax Setup</h3>
+            </div>
+
+            <div class="form-grid col-3">
+              <div class="form-group">
+                <label class="form-label">Currency Code</label>
+                <input type="text" id="set-currency" class="form-input" placeholder="INR">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Timezone</label>
+                <input type="text" id="set-timezone" class="form-input" placeholder="Asia/Kolkata">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Default Validity (Days)</label>
+                <input type="number" id="set-defaultValidityDays" class="form-input" placeholder="15">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Payment Instructions (Bank / UPI Details)</label>
+              <textarea id="set-paymentInstructions" class="form-textarea" placeholder="Bank Name, IFSC, UPI ID..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Standard Payment Terms</label>
+              <textarea id="set-defaultPaymentTerms" class="form-textarea"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">PDF Custom Footer Text</label>
+              <input type="text" id="set-pdfFooterText" class="form-input">
+            </div>
+
+            <div style="text-align:right; margin-top:24px;">
+              <button type="submit" id="btn-save-settings" class="btn btn-primary">Save Settings</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ── MODAL: CLIENT (ADD/EDIT) ──────────────────────────── -->
+  <div class="modal-overlay" id="modal-client">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="client-modal-title">New Client</h3>
+        <button type="button" class="btn-icon modal-close" onclick="closeModal('modal-client')">&times;</button>
+      </div>
+      <form id="form-client" novalidate>
+        <div class="modal-body">
+          <input type="hidden" id="client-id">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Client Name *</label>
+              <input type="text" id="client-name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Business / Company</label>
+              <input type="text" id="client-business" class="form-input">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" id="client-email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="text" id="client-phone" class="form-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" id="client-address" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Private Notes</label>
+            <textarea id="client-notes" class="form-textarea"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-close" onclick="closeModal('modal-client')">Cancel</button>
+          <button type="submit" id="btn-save-client" class="btn btn-primary">Save Client</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MODAL: PROJECT (ADD/EDIT) ─────────────────────────── -->
+  <div class="modal-overlay" id="modal-project">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="project-modal-title">New Project</h3>
+        <button type="button" class="btn-icon modal-close" onclick="closeModal('modal-project')">&times;</button>
+      </div>
+      <form id="form-project" novalidate>
+        <div class="modal-body">
+          <input type="hidden" id="project-id">
+          <div class="form-group">
+            <label class="form-label">Client *</label>
+            <select id="project-client-select" class="form-select" required></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Project Name *</label>
+              <input type="text" id="project-name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Project Type</label>
+              <input type="text" id="project-type" class="form-input" placeholder="e.g. Full-Stack Web App">
+            </div>
+          </div>
+          <div class="form-grid col-3">
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select id="project-status" class="form-select">
+                <option value="LEAD">Lead</option>
+                <option value="QUOTATION_SENT">Quotation Sent</option>
+                <option value="APPROVED">Approved</option>
+                <option value="IN_PROGRESS">In Progress</option>
+                <option value="ON_HOLD">On Hold</option>
+                <option value="COMPLETED">Completed</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Agreed Budget</label>
+              <input type="number" step="0.01" id="project-amount" class="form-input" placeholder="0.00">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Deadline</label>
+              <input type="date" id="project-deadline" class="form-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Scope & Details</label>
+            <textarea id="project-scope" class="form-textarea"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-close" onclick="closeModal('modal-project')">Cancel</button>
+          <button type="submit" id="btn-save-project" class="btn btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MODAL: DOCUMENT CREATOR / BUILDER ─────────────────── -->
+  <div class="modal-overlay" id="modal-document">
+    <div class="modal-box modal-lg">
+      <div class="modal-header">
+        <h3 id="doc-modal-title">New Document</h3>
+        <button type="button" class="btn-icon modal-close" onclick="closeModal('modal-document')">&times;</button>
+      </div>
+      <form id="form-document" novalidate>
+        <div class="modal-body">
+          <input type="hidden" id="doc-id">
+          <div class="form-grid col-3">
+            <div class="form-group">
+              <label class="form-label">Document Type *</label>
+              <select id="doc-type" class="form-select" required>
+                <option value="QUOTATION">Quotation</option>
+                <option value="AGREEMENT">Agreement</option>
+                <option value="INVOICE">Invoice</option>
+                <option value="RECEIPT">Receipt</option>
+                <option value="HANDOVER">Handover</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Client *</label>
+              <select id="doc-client-select" class="form-select" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Project (Optional)</label>
+              <select id="doc-project-select" class="form-select"></select>
+            </div>
+          </div>
+
+          <div class="form-grid col-3">
+            <div class="form-group">
+              <label class="form-label">Document Title</label>
+              <input type="text" id="doc-title" class="form-input" placeholder="e.g. Website Development Invoice">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Issue Date</label>
+              <input type="date" id="doc-issueDate" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label" id="doc-date2-label">Due Date</label>
+              <input type="date" id="doc-dueDate" class="form-input">
+            </div>
+          </div>
+
+          <!-- Dynamic Line Items -->
+          <div style="margin:20px 0 10px; display:flex; justify-content:space-between; align-items:center;">
+            <label class="form-label" style="margin:0;">Line Items & Deliverables</label>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-add-line-item" onclick="addLineItemRow()">+ Add Line Item</button>
+          </div>
+
+          <table class="line-items-table">
+            <thead>
+              <tr>
+                <th style="width:50%;">Description</th>
+                <th style="width:15%;">Qty</th>
+                <th style="width:20%;">Rate</th>
+                <th style="width:15%;">Total</th>
+                <th style="width:5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="line-items-body">
+              <!-- Dynamically rendered rows -->
+            </tbody>
+          </table>
+
+          <div class="totals-summary">
+            <div class="totals-row-item">
+              <span>Subtotal:</span>
+              <span id="doc-calc-subtotal">₹0.00</span>
+            </div>
+            <div class="totals-row-item" style="align-items:center;">
+              <span>Discount (%):</span>
+              <input type="number" id="doc-discount" class="form-input" style="width:70px; padding:3px 6px;" value="0" min="0" max="100">
+            </div>
+            <div class="totals-row-item" style="align-items:center;">
+              <span>Tax (%):</span>
+              <input type="number" id="doc-tax" class="form-input" style="width:70px; padding:3px 6px;" value="0" min="0" max="100">
+            </div>
+            <div class="totals-row-item highlight">
+              <span>Total:</span>
+              <span id="doc-calc-total">₹0.00</span>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Terms & Notes</label>
+            <textarea id="doc-terms" class="form-textarea" placeholder="Specific terms, payment terms, or delivery notes..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-close" onclick="closeModal('modal-document')">Cancel</button>
+          <button type="button" class="btn btn-secondary" id="btn-doc-draft" onclick="submitDocument('DRAFT')">Save as Draft</button>
+          <button type="button" class="btn btn-primary" id="btn-doc-issue" onclick="submitDocument('ISSUED')">Save & Issue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── MODAL: PAYMENT RECORD ─────────────────────────────── -->
+  <div class="modal-overlay" id="modal-payment">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Record Client Payment</h3>
+        <button type="button" class="btn-icon modal-close" onclick="closeModal('modal-payment')">&times;</button>
+      </div>
+      <form id="form-payment" novalidate>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Client *</label>
+            <select id="payment-client-select" class="form-select" required></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Amount Received *</label>
+              <input type="number" step="0.01" id="payment-amount" class="form-input" required placeholder="0.00">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Payment Date</label>
+              <input type="date" id="payment-date" class="form-input">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Payment Method</label>
+              <select id="payment-method" class="form-select">
+                <option value="UPI">UPI</option>
+                <option value="Bank Transfer">Bank Transfer (NEFT/IMPS)</option>
+                <option value="Stripe">Stripe</option>
+                <option value="PayPal">PayPal</option>
+                <option value="Cash">Cash</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Transaction Reference</label>
+              <input type="text" id="payment-ref" class="form-input" placeholder="e.g. UTR / Transaction ID">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Allocate to Outstanding Invoice</label>
+            <select id="payment-invoice-select" class="form-select">
+              <option value="">-- No specific invoice (General credit) --</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" id="payment-auto-receipt" checked style="accent-color:var(--accent-1); width:16px; height:16px;">
+            <label for="payment-auto-receipt" style="font-size:13px; color:var(--text-secondary); cursor:pointer;">Auto-generate official Payment Receipt</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-close" onclick="closeModal('modal-payment')">Cancel</button>
+          <button type="submit" id="btn-save-payment" class="btn btn-primary">Record Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

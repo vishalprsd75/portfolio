@@ -1,0 +1,352 @@
+// ═══════════════════════════════════════════════════════════
+// Prisma Schema — Freelance Business Management System
+// SQLite Edition (Instant Local Zero-Setup)
+// ═══════════════════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ── Authentication ──────────────────────────────────────
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  name         String
+  role         String   @default("owner")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  settings     OwnerSettings?
+  activityLogs ActivityLog[]
+
+  @@map("users")
+}
+
+// ── Owner Settings ──────────────────────────────────────
+
+model OwnerSettings {
+  id                    String   @id @default(uuid())
+  userId                String   @unique @map("user_id")
+  user                  User     @relation(fields: [userId], references: [id])
+
+  // Business Details
+  businessName          String?  @map("business_name")
+  email                 String?
+  phone                 String?
+  address               String?
+  portfolioUrl          String?  @map("portfolio_url")
+  logoUrl               String?  @map("logo_url")
+
+  // Financial
+  currency              String   @default("INR")
+  timezone              String   @default("Asia/Kolkata")
+  paymentInstructions   String?  @map("payment_instructions")
+  taxEnabled            Boolean  @default(false) @map("tax_enabled")
+  taxLabel              String?  @default("Tax") @map("tax_label")
+  taxRate               Decimal? @map("tax_rate")
+  taxRegistrationNumber String?  @map("tax_registration_number")
+  taxNote               String?  @map("tax_note")
+
+  // Document Defaults
+  quotationPrefix       String   @default("QUO") @map("quotation_prefix")
+  agreementPrefix       String   @default("AGR") @map("agreement_prefix")
+  invoicePrefix         String   @default("INV") @map("invoice_prefix")
+  receiptPrefix         String   @default("REC") @map("receipt_prefix")
+  handoverPrefix        String   @default("HDO") @map("handover_prefix")
+  defaultValidityDays   Int      @default(15) @map("default_validity_days")
+  defaultPaymentTerms   String?  @map("default_payment_terms")
+  defaultRevisionTerms  String?  @map("default_revision_terms")
+
+  // PDF Branding
+  pdfFooterText         String?  @map("pdf_footer_text")
+
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+
+  @@map("owner_settings")
+}
+
+// ── Clients ─────────────────────────────────────────────
+
+model Client {
+  id           String   @id @default(uuid())
+  name         String
+  businessName String?  @map("business_name")
+  email        String
+  phone        String?
+  address      String?
+  notes        String?
+  status       String   @default("ACTIVE") // ACTIVE, ARCHIVED
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  projects     Project[]
+  documents    Document[]
+  payments     Payment[]
+
+  @@index([email])
+  @@index([status])
+  @@map("clients")
+}
+
+// ── Projects ────────────────────────────────────────────
+
+model Project {
+  id             String    @id @default(uuid())
+  clientId       String    @map("client_id")
+  client         Client    @relation(fields: [clientId], references: [id])
+
+  name           String
+  projectType    String?   @map("project_type")
+  description    String?
+  scope          String?
+  startDate      DateTime? @map("start_date")
+  deadline       DateTime?
+  agreedAmount   Decimal?  @map("agreed_amount")
+  paymentTerms   String?   @map("payment_terms")
+  status         String    @default("LEAD") // LEAD, QUOTATION_SENT, APPROVED, IN_PROGRESS, ON_HOLD, COMPLETED, CANCELLED
+  notes          String?
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  tasks          ProjectTask[]
+  documents      Document[]
+  payments       Payment[]
+
+  @@index([clientId])
+  @@index([status])
+  @@index([deadline])
+  @@map("projects")
+}
+
+model ProjectTask {
+  id          String    @id @default(uuid())
+  projectId   String    @map("project_id")
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  title       String
+  description String?
+  completed   Boolean   @default(false)
+  dueDate     DateTime? @map("due_date")
+  sortOrder   Int       @default(0) @map("sort_order")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([projectId])
+  @@map("project_tasks")
+}
+
+// ── Documents ───────────────────────────────────────────
+
+model Document {
+  id              String   @id @default(uuid())
+  documentNumber  String   @unique @map("document_number")
+  type            String   // QUOTATION, AGREEMENT, INVOICE, RECEIPT, HANDOVER
+  status          String   @default("DRAFT") // DRAFT, ISSUED, ACCEPTED, CANCELLED, REVISED
+
+  clientId        String   @map("client_id")
+  client          Client   @relation(fields: [clientId], references: [id])
+
+  projectId       String?  @map("project_id")
+  project         Project? @relation(fields: [projectId], references: [id])
+
+  // Dates
+  issueDate       DateTime? @map("issue_date")
+  validityDate    DateTime? @map("validity_date")
+  dueDate         DateTime? @map("due_date")
+
+  // Content
+  title           String?
+  description     String?
+  notes           String?
+  terms           String?
+  clauses         Json?
+
+  // Financial Summary
+  subtotal        Decimal  @default(0)
+  discountPercent Decimal? @map("discount_percent")
+  discountAmount  Decimal  @default(0) @map("discount_amount")
+  taxPercent      Decimal? @map("tax_percent")
+  taxAmount       Decimal  @default(0) @map("tax_amount")
+  totalAmount     Decimal  @default(0) @map("total_amount")
+
+  // Handover-specific
+  completionDate  DateTime? @map("completion_date")
+  deliverables    Json?
+  websiteUrl      String?   @map("website_url")
+  transferChecklist Json?   @map("transfer_checklist")
+  supportPeriod   String?   @map("support_period")
+
+  // Receipt-specific
+  paymentId       String?   @map("payment_id")
+  payment         Payment?  @relation(fields: [paymentId], references: [id])
+
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  lineItems       DocumentLineItem[]
+  versions        DocumentVersion[]
+  invoice         Invoice?
+
+  // Relationships
+  relatedFromDocs DocumentRelationship[] @relation("FromDocument")
+  relatedToDocs   DocumentRelationship[] @relation("ToDocument")
+
+  @@index([clientId])
+  @@index([projectId])
+  @@index([type])
+  @@index([status])
+  @@index([issueDate])
+  @@map("documents")
+}
+
+model DocumentLineItem {
+  id          String   @id @default(uuid())
+  documentId  String   @map("document_id")
+  document    Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  description String
+  quantity    Decimal  @default(1)
+  unitPrice   Decimal  @map("unit_price")
+  amount      Decimal
+  sortOrder   Int      @default(0) @map("sort_order")
+
+  @@index([documentId])
+  @@map("document_line_items")
+}
+
+model DocumentVersion {
+  id            String   @id @default(uuid())
+  documentId    String   @map("document_id")
+  document      Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  versionNumber Int      @map("version_number")
+  snapshot      Json
+  snapshotAt    DateTime @default(now()) @map("snapshot_at")
+
+  @@unique([documentId, versionNumber])
+  @@index([documentId])
+  @@map("document_versions")
+}
+
+model DocumentRelationship {
+  id           String   @id @default(uuid())
+  fromDocId    String   @map("from_doc_id")
+  fromDoc      Document @relation("FromDocument", fields: [fromDocId], references: [id], onDelete: Cascade)
+  toDocId      String   @map("to_doc_id")
+  toDoc        Document @relation("ToDocument", fields: [toDocId], references: [id], onDelete: Cascade)
+  relationType String   @map("relation_type")
+
+  @@unique([fromDocId, toDocId, relationType])
+  @@map("document_relationships")
+}
+
+// ── Invoices ────────────────────────────────────────────
+
+model Invoice {
+  id            String   @id @default(uuid())
+  documentId    String   @unique @map("document_id")
+  document      Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  invoiceStatus String   @default("DRAFT") @map("invoice_status") // DRAFT, ISSUED, PARTIALLY_PAID, PAID, OVERDUE, CANCELLED
+  paidAmount    Decimal  @default(0) @map("paid_amount")
+  balance       Decimal  @default(0)
+
+  allocations   PaymentAllocation[]
+
+  @@index([invoiceStatus])
+  @@map("invoices")
+}
+
+// ── Payments ────────────────────────────────────────────
+
+model Payment {
+  id             String    @id @default(uuid())
+  clientId       String    @map("client_id")
+  client         Client    @relation(fields: [clientId], references: [id])
+
+  projectId      String?   @map("project_id")
+  project        Project?  @relation(fields: [projectId], references: [id])
+
+  amount         Decimal
+  paymentDate    DateTime  @map("payment_date")
+  paymentMethod  String?   @map("payment_method")
+  transactionRef String?   @map("transaction_ref")
+  notes          String?
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  allocations    PaymentAllocation[]
+  receipts       Document[]
+
+  @@index([clientId])
+  @@index([projectId])
+  @@index([paymentDate])
+  @@map("payments")
+}
+
+model PaymentAllocation {
+  id        String  @id @default(uuid())
+  paymentId String  @map("payment_id")
+  payment   Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  invoiceId String  @map("invoice_id")
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+
+  amount    Decimal
+
+  @@unique([paymentId, invoiceId])
+  @@map("payment_allocations")
+}
+
+// ── Document Sequences ──────────────────────────────────
+
+model DocumentSequence {
+  id         String @id @default(uuid())
+  type       String
+  year       Int
+  lastNumber Int    @default(0) @map("last_number")
+
+  @@unique([type, year])
+  @@map("document_sequences")
+}
+
+// ── Document Templates ──────────────────────────────────
+
+model DocumentTemplate {
+  id        String   @id @default(uuid())
+  name      String
+  type      String
+  content   Json
+  isDefault Boolean  @default(false) @map("is_default")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("document_templates")
+}
+
+// ── Activity Log ────────────────────────────────────────
+
+model ActivityLog {
+  id         String   @id @default(uuid())
+  userId     String?  @map("user_id")
+  user       User?    @relation(fields: [userId], references: [id])
+
+  action     String
+  entityType String?  @map("entity_type")
+  entityId   String?  @map("entity_id")
+  details    Json?
+  ipAddress  String?  @map("ip_address")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([action])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("activity_logs")
+}
