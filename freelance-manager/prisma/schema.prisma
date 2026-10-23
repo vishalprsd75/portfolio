@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════
 // Prisma Schema — Freelance Business Management System
-// SQLite Edition (Instant Local Zero-Setup)
+// Multi-Database Edition (PostgreSQL / SQLite)
 // ═══════════════════════════════════════════════════════════
 
 generator client {

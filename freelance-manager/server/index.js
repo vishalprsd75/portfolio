@@ -10,7 +10,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { readFileSync, existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 
 import { prisma } from './config/db.js';
 import { authRouter } from './routes/auth.js';

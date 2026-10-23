@@ -16,7 +16,11 @@
     "db:studio": "npx prisma studio",
     "test": "node --test tests/**/*.test.js"
   },
-  "keywords": ["freelance", "business-management", "invoicing"],
+  "keywords": [
+    "freelance",
+    "business-management",
+    "invoicing"
+  ],
   "author": "Vishal Prasad",
   "license": "ISC",
   "dependencies": {
@@ -28,7 +32,6 @@
     "express-rate-limit": "^7.4.0",
     "express-session": "^1.18.0",
     "helmet": "^8.0.0",
-    "multer": "^1.4.5-lts.1",
     "puppeteer": "^23.0.0"
   },
   "devDependencies": {
