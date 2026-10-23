@@ -229,7 +229,21 @@ clientsRouter.delete('/:id', async (req, res, next) => {
     if (existing._count.documents > 0 || existing._count.payments > 0) {
       return res.status(400).json({ error: 'Cannot delete client with active documents or payments. You can set their status to Archived.' });
     }
-    await prisma.client.delete({ where: { id: req.params.id } });
+
+    // Safely delete associated projects & tasks in transaction to avoid foreign key errors
+    await prisma.$transaction(async (tx) => {
+      const projects = await tx.project.findMany({
+        where: { clientId: req.params.id },
+        select: { id: true },
+      });
+      const projectIds = projects.map((p) => p.id);
+      if (projectIds.length > 0) {
+        await tx.projectTask.deleteMany({ where: { projectId: { in: projectIds } } });
+        await tx.project.deleteMany({ where: { clientId: req.params.id } });
+      }
+      await tx.client.delete({ where: { id: req.params.id } });
+    });
+
     await logActivity(req, 'client.deleted', 'client', req.params.id, { name: existing.name });
     res.json({ message: 'Client deleted successfully' });
   } catch (err) {

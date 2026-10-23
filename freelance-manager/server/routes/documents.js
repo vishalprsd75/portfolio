@@ -516,7 +516,18 @@ documentsRouter.delete('/:id', async (req, res, next) => {
       });
     }
 
-    await prisma.document.delete({ where: { id } });
+    await prisma.$transaction(async (tx) => {
+      await tx.documentLineItem.deleteMany({ where: { documentId: id } });
+      await tx.documentVersion.deleteMany({ where: { documentId: id } });
+      await tx.documentRelationship.deleteMany({
+        where: { OR: [{ fromDocId: id }, { toDocId: id }] },
+      });
+      if (doc.invoice) {
+        await tx.paymentAllocation.deleteMany({ where: { invoiceId: doc.invoice.id } });
+        await tx.invoice.delete({ where: { id: doc.invoice.id } });
+      }
+      await tx.document.delete({ where: { id } });
+    });
 
     logActivity({
       userId: req.session?.userId,

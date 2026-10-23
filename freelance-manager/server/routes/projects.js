@@ -244,7 +244,10 @@ projectsRouter.delete('/:id', async (req, res, next) => {
     if (existing._count.documents > 0 || existing._count.payments > 0) {
       return res.status(400).json({ error: 'Cannot delete project with active documents or payments.' });
     }
-    await prisma.project.delete({ where: { id: req.params.id } });
+    await prisma.$transaction(async (tx) => {
+      await tx.projectTask.deleteMany({ where: { projectId: req.params.id } });
+      await tx.project.delete({ where: { id: req.params.id } });
+    });
     await logActivity(req, 'project.deleted', 'project', req.params.id, { name: existing.name });
     res.json({ message: 'Project deleted successfully' });
   } catch (err) {
