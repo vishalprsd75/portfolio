@@ -92,6 +92,44 @@ authRouter.get('/me', async (req, res) => {
   }
 });
 
+// ── PUT /password (Change Password) ──────────────────────
+authRouter.put('/password', async (req, res, next) => {
+  if (!req.session?.userId) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+
+  try {
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ error: 'Current and new password are required' });
+    }
+    if (newPassword.length < 8) {
+      return res.status(400).json({ error: 'New password must be at least 8 characters' });
+    }
+
+    const user = await prisma.user.findUnique({ where: { id: req.session.userId } });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const valid = await bcrypt.compare(currentPassword, user.passwordHash);
+    if (!valid) {
+      return res.status(400).json({ error: 'Current password is incorrect' });
+    }
+
+    const passwordHash = await bcrypt.hash(newPassword, 12);
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { passwordHash },
+    });
+
+    await logActivity(req, 'auth.password_changed', 'user', user.id);
+    res.json({ message: 'Password updated successfully' });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // ── POST /setup (First-time owner account creation) ───────
 authRouter.post('/setup', async (req, res, next) => {
   try {

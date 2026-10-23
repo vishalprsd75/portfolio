@@ -1066,6 +1066,44 @@ document.getElementById('settings-form')?.addEventListener('submit', async (e) =
   }
 });
 
+document.getElementById('form-password')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const currentPassword = document.getElementById('pwd-current').value;
+  const newPassword = document.getElementById('pwd-new').value;
+
+  if (!currentPassword || !newPassword) {
+    showToast('Please provide both current and new password', 'error');
+    return;
+  }
+  if (newPassword.length < 8) {
+    showToast('New password must be at least 8 characters', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('btn-change-password');
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Updating...';
+  }
+
+  try {
+    const res = await api('/auth/password', {
+      method: 'PUT',
+      body: JSON.stringify({ currentPassword, newPassword }),
+    });
+    showToast(res.message || 'Password updated successfully');
+    document.getElementById('pwd-current').value = '';
+    document.getElementById('pwd-new').value = '';
+  } catch (err) {
+    showToast(err.message, 'error');
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = 'Update Password';
+    }
+  }
+});
+
 // ── Shared Modal Helpers ──────────────────────────────────
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
