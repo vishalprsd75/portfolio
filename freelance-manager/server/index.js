@@ -30,6 +30,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3500;
+const isProduction = process.env.NODE_ENV === 'production';
 const dbUrl = process.env.DATABASE_URL ||
   process.env.POSTGRES_PRISMA_URL ||
   process.env.POSTGRES_URL ||
