@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "npx serve .",
+    "build": "echo 'Static build ready'",
     "start": "npx serve ."
   },
   "keywords": [
