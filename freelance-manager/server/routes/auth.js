@@ -158,6 +158,8 @@ authRouter.get('/setup-status', async (req, res) => {
     const userCount = await prisma.user.count();
     res.json({ setupComplete: userCount > 0 });
   } catch (err) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('[SETUP STATUS WARNING]', err.message);
+    // If the User table doesn't exist yet, return setupComplete: false so user can set up or retry
+    res.json({ setupComplete: false });
   }
 });

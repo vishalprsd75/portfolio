@@ -52,10 +52,14 @@ try {
 }
 
 console.log('🔄 Syncing Database Schema...');
+const directMigrationUrl = process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL || dbUrl;
 try {
-  execSync('npx prisma db push --accept-data-loss', { stdio: 'inherit' });
+  execSync('npx prisma db push --accept-data-loss', {
+    env: { ...process.env, DATABASE_URL: directMigrationUrl },
+    stdio: 'inherit',
+  });
 } catch (err) {
-  console.log('Database push completed.');
+  console.log('Database push notice:', err.message);
 }
 
 // Auto-seed if running on live production database
