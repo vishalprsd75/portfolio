@@ -169,9 +169,11 @@ app.use((err, req, res, next) => {
 });
 
 // ── Start Server ──────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n  ⚡ Freelance Manager running at port ${PORT}\n`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`\n  ⚡ Freelance Manager running at port ${PORT}\n`);
+  });
+}
 
 // ── Graceful Shutdown ─────────────────────────────────────
 process.on('SIGTERM', async () => {
