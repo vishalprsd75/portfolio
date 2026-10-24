@@ -151,7 +151,7 @@ function switchView(viewName) {
     viewName.charAt(0).toUpperCase() + viewName.slice(1);
 
   // Close mobile sidebar if open
-  document.getElementById('sidebar').classList.remove('mobile-open');
+  closeMobileSidebar();
 
   if (viewName === 'dashboard') loadDashboard();
   else if (viewName === 'clients') loadClients();
@@ -161,10 +161,26 @@ function switchView(viewName) {
   else if (viewName === 'settings') loadSettingsForm();
 }
 
-// Mobile sidebar toggle
-document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-  document.getElementById('sidebar').classList.toggle('mobile-open');
-});
+// ── Mobile Sidebar Controls ───────────────────────────────
+function openMobileSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  sidebar?.classList.add('mobile-open');
+  backdrop?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  sidebar?.classList.remove('mobile-open');
+  backdrop?.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('mobile-menu-btn')?.addEventListener('click', openMobileSidebar);
+document.getElementById('sidebar-close-btn')?.addEventListener('click', closeMobileSidebar);
+document.getElementById('sidebar-backdrop')?.addEventListener('click', closeMobileSidebar);
 
 // Logout
 document.getElementById('logout-btn')?.addEventListener('click', async () => {
